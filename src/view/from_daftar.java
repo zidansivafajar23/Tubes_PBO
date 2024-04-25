@@ -14,12 +14,12 @@ import service.DatabaseConnection;
  *
  * @author zidan
  */
-public class from_login extends javax.swing.JFrame {
+public class from_daftar extends javax.swing.JFrame {
     int xx, xy;
     /**
      * Creates new form from_login
      */
-    public from_login() {
+    public from_daftar() {
         initComponents();
         setBackground(new Color(0,0,0,0));
     }
@@ -35,10 +35,13 @@ public class from_login extends javax.swing.JFrame {
 
         pn_kiri = new custom.Custom_JPanelRounded();
         jLabel3 = new javax.swing.JLabel();
-        loginButton = new custom.Custom_ButonRounded();
         usernameTextField = new custom.Custom_TextField();
-        passwordField = new custom.Custom_PasswordField();
+        NoTelpTextField = new custom.Custom_PasswordField();
         custom_ButonRounded2 = new custom.Custom_ButonRounded();
+        passwordTextField = new custom.Custom_PasswordField();
+        namaTextField = new custom.Custom_PasswordField();
+        alamatTextField = new custom.Custom_PasswordField();
+        tanggalLahirTextField = new custom.Custom_PasswordField();
         pn_kanan = new custom.Custom_JPanelRounded();
         tombol_close = new javax.swing.JLabel();
         gambar = new javax.swing.JLabel();
@@ -64,26 +67,8 @@ public class from_login extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        jLabel3.setText(" Welcome ");
-        pn_kiri.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 64, -1, -1));
-
-        loginButton.setBackground(new java.awt.Color(0, 102, 204));
-        loginButton.setBorder(null);
-        loginButton.setForeground(new java.awt.Color(255, 255, 255));
-        loginButton.setText("LOGIN");
-        loginButton.setBorderColor(new java.awt.Color(153, 153, 153));
-        loginButton.setBorderPainted(false);
-        loginButton.setColor(new java.awt.Color(153, 153, 153));
-        loginButton.setColorClick(new java.awt.Color(102, 102, 102));
-        loginButton.setColorOver(new java.awt.Color(153, 153, 153));
-        loginButton.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        loginButton.setRadius(10);
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
-            }
-        });
-        pn_kiri.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 220, 40));
+        jLabel3.setText("Daftar");
+        pn_kiri.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         usernameTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         usernameTextField.setLabelText("Username");
@@ -92,16 +77,16 @@ public class from_login extends javax.swing.JFrame {
                 usernameTextFieldActionPerformed(evt);
             }
         });
-        pn_kiri.add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 220, -1));
+        pn_kiri.add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 220, -1));
 
-        passwordField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        passwordField.setLabelText("Password");
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
+        NoTelpTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        NoTelpTextField.setLabelText("No. Telepon");
+        NoTelpTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
+                NoTelpTextFieldActionPerformed(evt);
             }
         });
-        pn_kiri.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 220, -1));
+        pn_kiri.add(NoTelpTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 220, -1));
 
         custom_ButonRounded2.setForeground(new java.awt.Color(255, 255, 255));
         custom_ButonRounded2.setText("DAFTAR");
@@ -112,9 +97,45 @@ public class from_login extends javax.swing.JFrame {
                 custom_ButonRounded2ActionPerformed(evt);
             }
         });
-        pn_kiri.add(custom_ButonRounded2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 220, 40));
+        pn_kiri.add(custom_ButonRounded2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 220, 40));
 
-        getContentPane().add(pn_kiri, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 400));
+        passwordTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        passwordTextField.setLabelText("Password");
+        passwordTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordTextFieldActionPerformed(evt);
+            }
+        });
+        pn_kiri.add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 220, -1));
+
+        namaTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        namaTextField.setLabelText("Nama");
+        namaTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaTextFieldActionPerformed(evt);
+            }
+        });
+        pn_kiri.add(namaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 220, -1));
+
+        alamatTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        alamatTextField.setLabelText("Alamat");
+        alamatTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alamatTextFieldActionPerformed(evt);
+            }
+        });
+        pn_kiri.add(alamatTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 220, -1));
+
+        tanggalLahirTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        tanggalLahirTextField.setLabelText("Tanggal Lahir");
+        tanggalLahirTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tanggalLahirTextFieldActionPerformed(evt);
+            }
+        });
+        pn_kiri.add(tanggalLahirTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 220, -1));
+
+        getContentPane().add(pn_kiri, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 440));
 
         pn_kanan.setBackground(new java.awt.Color(255, 255, 255));
         pn_kanan.setRoundBottomRight(50);
@@ -151,10 +172,10 @@ public class from_login extends javax.swing.JFrame {
                 .addComponent(tombol_close)
                 .addGap(44, 44, 44)
                 .addComponent(gambar)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
-        getContentPane().add(pn_kanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 330, 400));
+        getContentPane().add(pn_kanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 330, 440));
 
         pack();
         setLocationRelativeTo(null);
@@ -179,22 +200,30 @@ public class from_login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTextFieldActionPerformed
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
-        String username = usernameTextField.getText();
-        String password = new String(passwordField.getPassword());
-        // Perform sign in process here
-        DatabaseConnection.signIn(username, password);
-    }//GEN-LAST:event_loginButtonActionPerformed
-
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+    private void NoTelpTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoTelpTextFieldActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_passwordFieldActionPerformed
+    }//GEN-LAST:event_NoTelpTextFieldActionPerformed
 
     private void custom_ButonRounded2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custom_ButonRounded2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_custom_ButonRounded2ActionPerformed
+
+    private void passwordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordTextFieldActionPerformed
+
+    private void namaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaTextFieldActionPerformed
+
+    private void alamatTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alamatTextFieldActionPerformed
+
+    private void tanggalLahirTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tanggalLahirTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tanggalLahirTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,32 +242,36 @@ public class from_login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(from_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(from_daftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(from_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(from_daftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(from_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(from_daftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(from_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(from_daftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new from_login().setVisible(true);
+                new from_daftar().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private custom.Custom_PasswordField NoTelpTextField;
+    private custom.Custom_PasswordField alamatTextField;
     private custom.Custom_ButonRounded custom_ButonRounded2;
     private javax.swing.JLabel gambar;
     private javax.swing.JLabel jLabel3;
-    private custom.Custom_ButonRounded loginButton;
-    private custom.Custom_PasswordField passwordField;
+    private custom.Custom_PasswordField namaTextField;
+    private custom.Custom_PasswordField passwordTextField;
     private custom.Custom_JPanelRounded pn_kanan;
     private custom.Custom_JPanelRounded pn_kiri;
+    private custom.Custom_PasswordField tanggalLahirTextField;
     private javax.swing.JLabel tombol_close;
     private custom.Custom_TextField usernameTextField;
     // End of variables declaration//GEN-END:variables
