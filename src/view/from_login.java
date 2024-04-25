@@ -2,6 +2,7 @@ package view;
 
 
 import java.awt.Color;
+import service.DatabaseConnection;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,9 +35,10 @@ public class from_login extends javax.swing.JFrame {
 
         pn_kiri = new custom.Custom_JPanelRounded();
         jLabel3 = new javax.swing.JLabel();
-        custom_ButonRounded1 = new custom.Custom_ButonRounded();
-        custom_TextField3 = new custom.Custom_TextField();
-        custom_PasswordField1 = new custom.Custom_PasswordField();
+        loginButton = new custom.Custom_ButonRounded();
+        usernameTextField = new custom.Custom_TextField();
+        passwordField = new custom.Custom_PasswordField();
+        custom_ButonRounded2 = new custom.Custom_ButonRounded();
         pn_kanan = new custom.Custom_JPanelRounded();
         tombol_close = new javax.swing.JLabel();
         gambar = new javax.swing.JLabel();
@@ -65,32 +67,54 @@ public class from_login extends javax.swing.JFrame {
         jLabel3.setText(" Welcome ");
         pn_kiri.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 64, -1, -1));
 
-        custom_ButonRounded1.setBorder(null);
-        custom_ButonRounded1.setForeground(new java.awt.Color(255, 255, 255));
-        custom_ButonRounded1.setText("LOGIN");
-        custom_ButonRounded1.setBorderColor(new java.awt.Color(153, 153, 153));
-        custom_ButonRounded1.setBorderPainted(false);
-        custom_ButonRounded1.setColor(new java.awt.Color(153, 153, 153));
-        custom_ButonRounded1.setColorClick(new java.awt.Color(102, 102, 102));
-        custom_ButonRounded1.setColorOver(new java.awt.Color(153, 153, 153));
-        custom_ButonRounded1.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        custom_ButonRounded1.setRadius(10);
-        pn_kiri.add(custom_ButonRounded1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 220, 40));
-
-        custom_TextField3.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        custom_TextField3.setLabelText("Username");
-        custom_TextField3.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setBackground(new java.awt.Color(0, 102, 204));
+        loginButton.setBorder(null);
+        loginButton.setForeground(new java.awt.Color(255, 255, 255));
+        loginButton.setText("LOGIN");
+        loginButton.setBorderColor(new java.awt.Color(153, 153, 153));
+        loginButton.setBorderPainted(false);
+        loginButton.setColor(new java.awt.Color(153, 153, 153));
+        loginButton.setColorClick(new java.awt.Color(102, 102, 102));
+        loginButton.setColorOver(new java.awt.Color(153, 153, 153));
+        loginButton.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        loginButton.setRadius(10);
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                custom_TextField3ActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
-        pn_kiri.add(custom_TextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 220, -1));
+        pn_kiri.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 220, 40));
 
-        custom_PasswordField1.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        custom_PasswordField1.setLabelText("Password");
-        pn_kiri.add(custom_PasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 220, -1));
+        usernameTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        usernameTextField.setLabelText("Username");
+        usernameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameTextFieldActionPerformed(evt);
+            }
+        });
+        pn_kiri.add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 220, -1));
 
-        getContentPane().add(pn_kiri, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 370));
+        passwordField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        passwordField.setLabelText("Password");
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
+        pn_kiri.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 220, -1));
+
+        custom_ButonRounded2.setForeground(new java.awt.Color(255, 255, 255));
+        custom_ButonRounded2.setText("DAFTAR");
+        custom_ButonRounded2.setColor(new java.awt.Color(0, 153, 204));
+        custom_ButonRounded2.setRadius(10);
+        custom_ButonRounded2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                custom_ButonRounded2ActionPerformed(evt);
+            }
+        });
+        pn_kiri.add(custom_ButonRounded2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 220, 40));
+
+        getContentPane().add(pn_kiri, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 400));
 
         pn_kanan.setBackground(new java.awt.Color(255, 255, 255));
         pn_kanan.setRoundBottomRight(50);
@@ -111,23 +135,26 @@ public class from_login extends javax.swing.JFrame {
         pn_kananLayout.setHorizontalGroup(
             pn_kananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_kananLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pn_kananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tombol_close)
-                    .addComponent(gambar))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(pn_kananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_kananLayout.createSequentialGroup()
+                        .addGap(276, 276, 276)
+                        .addComponent(tombol_close))
+                    .addGroup(pn_kananLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(gambar)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         pn_kananLayout.setVerticalGroup(
             pn_kananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_kananLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(tombol_close)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
                 .addComponent(gambar)
-                .addGap(36, 36, 36))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
-        getContentPane().add(pn_kanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 330, 370));
+        getContentPane().add(pn_kanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 330, 400));
 
         pack();
         setLocationRelativeTo(null);
@@ -147,10 +174,27 @@ public class from_login extends javax.swing.JFrame {
     private void tombol_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombol_closeMouseClicked
         dispose();
     }//GEN-LAST:event_tombol_closeMouseClicked
-
-    private void custom_TextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custom_TextField3ActionPerformed
+                  
+    private void usernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_custom_TextField3ActionPerformed
+    }//GEN-LAST:event_usernameTextFieldActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        String username = usernameTextField.getText();
+        String password = new String(passwordField.getPassword());
+        // Perform sign in process here
+        DatabaseConnection.signIn(username, password);
+    }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_passwordFieldActionPerformed
+
+    private void custom_ButonRounded2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custom_ButonRounded2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_custom_ButonRounded2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,13 +232,14 @@ public class from_login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private custom.Custom_ButonRounded custom_ButonRounded1;
-    private custom.Custom_PasswordField custom_PasswordField1;
-    private custom.Custom_TextField custom_TextField3;
+    private custom.Custom_ButonRounded custom_ButonRounded2;
     private javax.swing.JLabel gambar;
     private javax.swing.JLabel jLabel3;
+    private custom.Custom_ButonRounded loginButton;
+    private custom.Custom_PasswordField passwordField;
     private custom.Custom_JPanelRounded pn_kanan;
     private custom.Custom_JPanelRounded pn_kiri;
     private javax.swing.JLabel tombol_close;
+    private custom.Custom_TextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }
