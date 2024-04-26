@@ -1,7 +1,8 @@
 package view;
 
-
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import main.MenuUtama;
 import service.DatabaseConnection;
 
 /*
@@ -9,19 +10,26 @@ import service.DatabaseConnection;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author zidan
  */
-public class from_login extends javax.swing.JFrame {
+public class FormLogin extends javax.swing.JFrame {
+
     int xx, xy;
+
     /**
      * Creates new form from_login
      */
-    public from_login() {
+    public FormLogin() {
         initComponents();
-        setBackground(new Color(0,0,0,0));
+        setBackground(new Color(0, 0, 0, 0));
+    }
+    
+    private void openFormDaftar() {
+        FormDaftar daftar = new FormDaftar();
+        daftar.setVisible(true);
+        this.setVisible(false);
     }
 
     /**
@@ -38,7 +46,7 @@ public class from_login extends javax.swing.JFrame {
         loginButton = new custom.Custom_ButonRounded();
         usernameTextField = new custom.Custom_TextField();
         passwordField = new custom.Custom_PasswordField();
-        custom_ButonRounded2 = new custom.Custom_ButonRounded();
+        daftarButton = new custom.Custom_ButonRounded();
         pn_kanan = new custom.Custom_JPanelRounded();
         tombol_close = new javax.swing.JLabel();
         gambar = new javax.swing.JLabel();
@@ -60,12 +68,10 @@ public class from_login extends javax.swing.JFrame {
         pn_kiri.setBackground(new java.awt.Color(255, 255, 255));
         pn_kiri.setRoundBottomLeft(50);
         pn_kiri.setRoundTopLeft(50);
-        pn_kiri.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabel3.setText(" Welcome ");
-        pn_kiri.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 64, -1, -1));
 
         loginButton.setBackground(new java.awt.Color(0, 153, 204));
         loginButton.setBorder(null);
@@ -83,7 +89,6 @@ public class from_login extends javax.swing.JFrame {
                 loginButtonActionPerformed(evt);
             }
         });
-        pn_kiri.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 220, 40));
 
         usernameTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         usernameTextField.setLabelText("Username");
@@ -92,7 +97,6 @@ public class from_login extends javax.swing.JFrame {
                 usernameTextFieldActionPerformed(evt);
             }
         });
-        pn_kiri.add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 220, -1));
 
         passwordField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         passwordField.setLabelText("Password");
@@ -101,21 +105,54 @@ public class from_login extends javax.swing.JFrame {
                 passwordFieldActionPerformed(evt);
             }
         });
-        pn_kiri.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 220, -1));
 
-        custom_ButonRounded2.setForeground(new java.awt.Color(255, 255, 255));
-        custom_ButonRounded2.setText("DAFTAR");
-        custom_ButonRounded2.setBorderColor(new java.awt.Color(0, 153, 204));
-        custom_ButonRounded2.setColor(new java.awt.Color(0, 153, 204));
-        custom_ButonRounded2.setColorClick(new java.awt.Color(0, 102, 153));
-        custom_ButonRounded2.setColorOver(new java.awt.Color(0, 153, 204));
-        custom_ButonRounded2.setRadius(10);
-        custom_ButonRounded2.addActionListener(new java.awt.event.ActionListener() {
+        daftarButton.setForeground(new java.awt.Color(255, 255, 255));
+        daftarButton.setText("DAFTAR");
+        daftarButton.setBorderColor(new java.awt.Color(0, 153, 204));
+        daftarButton.setColor(new java.awt.Color(0, 153, 204));
+        daftarButton.setColorClick(new java.awt.Color(0, 102, 153));
+        daftarButton.setColorOver(new java.awt.Color(0, 153, 204));
+        daftarButton.setRadius(10);
+        daftarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                custom_ButonRounded2ActionPerformed(evt);
+                daftarButtonActionPerformed(evt);
             }
         });
-        pn_kiri.add(custom_ButonRounded2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 220, 40));
+
+        javax.swing.GroupLayout pn_kiriLayout = new javax.swing.GroupLayout(pn_kiri);
+        pn_kiri.setLayout(pn_kiriLayout);
+        pn_kiriLayout.setHorizontalGroup(
+            pn_kiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_kiriLayout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(jLabel3))
+            .addGroup(pn_kiriLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pn_kiriLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pn_kiriLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pn_kiriLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(daftarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pn_kiriLayout.setVerticalGroup(
+            pn_kiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_kiriLayout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(jLabel3)
+                .addGap(56, 56, 56)
+                .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(daftarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         getContentPane().add(pn_kiri, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 400));
 
@@ -138,14 +175,11 @@ public class from_login extends javax.swing.JFrame {
         pn_kananLayout.setHorizontalGroup(
             pn_kananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_kananLayout.createSequentialGroup()
-                .addGroup(pn_kananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pn_kananLayout.createSequentialGroup()
-                        .addGap(276, 276, 276)
-                        .addComponent(tombol_close))
-                    .addGroup(pn_kananLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(gambar)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(276, 276, 276)
+                .addComponent(tombol_close))
+            .addGroup(pn_kananLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(gambar))
         );
         pn_kananLayout.setVerticalGroup(
             pn_kananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,8 +187,7 @@ public class from_login extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(tombol_close)
                 .addGap(44, 44, 44)
-                .addComponent(gambar)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addComponent(gambar))
         );
 
         getContentPane().add(pn_kanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 330, 400));
@@ -177,27 +210,41 @@ public class from_login extends javax.swing.JFrame {
     private void tombol_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombol_closeMouseClicked
         dispose();
     }//GEN-LAST:event_tombol_closeMouseClicked
-                  
+
     private void usernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTextFieldActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        String username = usernameTextField.getText();
-        String password = new String(passwordField.getPassword());
-        // Perform sign in process here
-        DatabaseConnection.signIn(username, password);
+
+        try {
+            String username = usernameTextField.getText();
+            String password = new String(passwordField.getPassword());
+            // Perform sign in process here
+            DatabaseConnection.signIn(username, password);
+            JOptionPane.showMessageDialog(this, "Sign in successful!");
+            if (DatabaseConnection.signIn(username, password)) {
+                MenuUtama m = new MenuUtama();
+                m.setVisible(true);
+                this.setVisible(false);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Sign in failed! Because " + e);
+        }
+
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_passwordFieldActionPerformed
 
-    private void custom_ButonRounded2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custom_ButonRounded2ActionPerformed
+    private void daftarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_custom_ButonRounded2ActionPerformed
+        dispose(); // Close the current form
+        openFormDaftar();
+    }//GEN-LAST:event_daftarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,26 +263,25 @@ public class from_login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(from_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(from_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(from_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(from_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new from_login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FormLogin().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private custom.Custom_ButonRounded custom_ButonRounded2;
+    private custom.Custom_ButonRounded daftarButton;
     private javax.swing.JLabel gambar;
     private javax.swing.JLabel jLabel3;
     private custom.Custom_ButonRounded loginButton;
