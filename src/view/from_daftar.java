@@ -36,12 +36,12 @@ public class from_daftar extends javax.swing.JFrame {
         pn_kiri = new custom.Custom_JPanelRounded();
         jLabel3 = new javax.swing.JLabel();
         usernameTextField = new custom.Custom_TextField();
-        NoTelpTextField = new custom.Custom_PasswordField();
         custom_ButonRounded2 = new custom.Custom_ButonRounded();
         passwordTextField = new custom.Custom_PasswordField();
-        namaTextField = new custom.Custom_PasswordField();
-        alamatTextField = new custom.Custom_PasswordField();
-        tanggalLahirTextField = new custom.Custom_PasswordField();
+        usernameTextField1 = new custom.Custom_TextField();
+        usernameTextField2 = new custom.Custom_TextField();
+        usernameTextField3 = new custom.Custom_TextField();
+        usernameTextField4 = new custom.Custom_TextField();
         pn_kanan = new custom.Custom_JPanelRounded();
         tombol_close = new javax.swing.JLabel();
         gambar = new javax.swing.JLabel();
@@ -71,26 +71,20 @@ public class from_daftar extends javax.swing.JFrame {
         pn_kiri.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         usernameTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        usernameTextField.setLabelText("Username");
+        usernameTextField.setLabelText("No. Telepon");
         usernameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameTextFieldActionPerformed(evt);
             }
         });
-        pn_kiri.add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 220, -1));
-
-        NoTelpTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        NoTelpTextField.setLabelText("No. Telepon");
-        NoTelpTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NoTelpTextFieldActionPerformed(evt);
-            }
-        });
-        pn_kiri.add(NoTelpTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 220, -1));
+        pn_kiri.add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 220, -1));
 
         custom_ButonRounded2.setForeground(new java.awt.Color(255, 255, 255));
         custom_ButonRounded2.setText("DAFTAR");
+        custom_ButonRounded2.setBorderColor(new java.awt.Color(0, 153, 204));
         custom_ButonRounded2.setColor(new java.awt.Color(0, 153, 204));
+        custom_ButonRounded2.setColorClick(new java.awt.Color(0, 102, 153));
+        custom_ButonRounded2.setColorOver(new java.awt.Color(0, 153, 204));
         custom_ButonRounded2.setRadius(10);
         custom_ButonRounded2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,32 +102,41 @@ public class from_daftar extends javax.swing.JFrame {
         });
         pn_kiri.add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 220, -1));
 
-        namaTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        namaTextField.setLabelText("Nama");
-        namaTextField.addActionListener(new java.awt.event.ActionListener() {
+        usernameTextField1.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        usernameTextField1.setLabelText("Username");
+        usernameTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                namaTextFieldActionPerformed(evt);
+                usernameTextField1ActionPerformed(evt);
             }
         });
-        pn_kiri.add(namaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 220, -1));
+        pn_kiri.add(usernameTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 220, -1));
 
-        alamatTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        alamatTextField.setLabelText("Alamat");
-        alamatTextField.addActionListener(new java.awt.event.ActionListener() {
+        usernameTextField2.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        usernameTextField2.setLabelText("Nama");
+        usernameTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alamatTextFieldActionPerformed(evt);
+                usernameTextField2ActionPerformed(evt);
             }
         });
-        pn_kiri.add(alamatTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 220, -1));
+        pn_kiri.add(usernameTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 220, -1));
 
-        tanggalLahirTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        tanggalLahirTextField.setLabelText("Tanggal Lahir");
-        tanggalLahirTextField.addActionListener(new java.awt.event.ActionListener() {
+        usernameTextField3.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        usernameTextField3.setLabelText("Alamat");
+        usernameTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tanggalLahirTextFieldActionPerformed(evt);
+                usernameTextField3ActionPerformed(evt);
             }
         });
-        pn_kiri.add(tanggalLahirTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 220, -1));
+        pn_kiri.add(usernameTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 220, -1));
+
+        usernameTextField4.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        usernameTextField4.setLabelText("Tanggal Lahir");
+        usernameTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameTextField4ActionPerformed(evt);
+            }
+        });
+        pn_kiri.add(usernameTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 220, -1));
 
         getContentPane().add(pn_kiri, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 440));
 
@@ -200,11 +203,6 @@ public class from_daftar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTextFieldActionPerformed
 
-    private void NoTelpTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoTelpTextFieldActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_NoTelpTextFieldActionPerformed
-
     private void custom_ButonRounded2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custom_ButonRounded2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_custom_ButonRounded2ActionPerformed
@@ -213,17 +211,21 @@ public class from_daftar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordTextFieldActionPerformed
 
-    private void namaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaTextFieldActionPerformed
+    private void usernameTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_namaTextFieldActionPerformed
+    }//GEN-LAST:event_usernameTextField1ActionPerformed
 
-    private void alamatTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatTextFieldActionPerformed
+    private void usernameTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_alamatTextFieldActionPerformed
+    }//GEN-LAST:event_usernameTextField2ActionPerformed
 
-    private void tanggalLahirTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tanggalLahirTextFieldActionPerformed
+    private void usernameTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextField3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tanggalLahirTextFieldActionPerformed
+    }//GEN-LAST:event_usernameTextField3ActionPerformed
+
+    private void usernameTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameTextField4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,17 +264,17 @@ public class from_daftar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private custom.Custom_PasswordField NoTelpTextField;
-    private custom.Custom_PasswordField alamatTextField;
     private custom.Custom_ButonRounded custom_ButonRounded2;
     private javax.swing.JLabel gambar;
     private javax.swing.JLabel jLabel3;
-    private custom.Custom_PasswordField namaTextField;
     private custom.Custom_PasswordField passwordTextField;
     private custom.Custom_JPanelRounded pn_kanan;
     private custom.Custom_JPanelRounded pn_kiri;
-    private custom.Custom_PasswordField tanggalLahirTextField;
     private javax.swing.JLabel tombol_close;
     private custom.Custom_TextField usernameTextField;
+    private custom.Custom_TextField usernameTextField1;
+    private custom.Custom_TextField usernameTextField2;
+    private custom.Custom_TextField usernameTextField3;
+    private custom.Custom_TextField usernameTextField4;
     // End of variables declaration//GEN-END:variables
 }

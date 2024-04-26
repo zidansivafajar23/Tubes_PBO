@@ -67,15 +67,15 @@ public class from_login extends javax.swing.JFrame {
         jLabel3.setText(" Welcome ");
         pn_kiri.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 64, -1, -1));
 
-        loginButton.setBackground(new java.awt.Color(0, 102, 204));
+        loginButton.setBackground(new java.awt.Color(0, 153, 204));
         loginButton.setBorder(null);
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
         loginButton.setText("LOGIN");
-        loginButton.setBorderColor(new java.awt.Color(153, 153, 153));
+        loginButton.setBorderColor(new java.awt.Color(0, 153, 204));
         loginButton.setBorderPainted(false);
-        loginButton.setColor(new java.awt.Color(153, 153, 153));
-        loginButton.setColorClick(new java.awt.Color(102, 102, 102));
-        loginButton.setColorOver(new java.awt.Color(153, 153, 153));
+        loginButton.setColor(new java.awt.Color(0, 153, 204));
+        loginButton.setColorClick(new java.awt.Color(0, 102, 153));
+        loginButton.setColorOver(new java.awt.Color(0, 153, 204));
         loginButton.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         loginButton.setRadius(10);
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +105,10 @@ public class from_login extends javax.swing.JFrame {
 
         custom_ButonRounded2.setForeground(new java.awt.Color(255, 255, 255));
         custom_ButonRounded2.setText("DAFTAR");
+        custom_ButonRounded2.setBorderColor(new java.awt.Color(0, 153, 204));
         custom_ButonRounded2.setColor(new java.awt.Color(0, 153, 204));
+        custom_ButonRounded2.setColorClick(new java.awt.Color(0, 102, 153));
+        custom_ButonRounded2.setColorOver(new java.awt.Color(0, 153, 204));
         custom_ButonRounded2.setRadius(10);
         custom_ButonRounded2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
