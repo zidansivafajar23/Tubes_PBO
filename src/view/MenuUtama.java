@@ -18,8 +18,35 @@ public class MenuUtama extends javax.swing.JFrame {
     
     public MenuUtama() {
         initComponents();
+        pn_content.removeAll();
+        pn_content.add(new DashboardMember());
+        pn_content.repaint();
+        pn_content.revalidate();
     }
-
+    
+    public void setTampilanMenu(String namaMenu){
+        if (namaMenu == "menu1"){
+            pn_content.removeAll();
+            pn_content.add(new DashboardMember());
+            pn_content.repaint();
+            pn_content.revalidate();
+        } else if (namaMenu == "menu2"){
+            pn_content.removeAll();
+            pn_content.add(new DataBukuMember());
+            pn_content.repaint();
+            pn_content.revalidate();
+        } else if (namaMenu == "menu3"){
+            pn_content.removeAll();
+            pn_content.add(new DaftarPinjamanMember());
+            pn_content.repaint();
+            pn_content.revalidate();
+        } else if (namaMenu == "menu4"){
+            pn_content.removeAll();
+            pn_content.add(new DashboardMember());
+            pn_content.repaint();
+            pn_content.revalidate();
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,21 +61,21 @@ public class MenuUtama extends javax.swing.JFrame {
         Perpusku = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         menu1 = new javax.swing.JPanel();
-        pn_line = new javax.swing.JPanel();
+        pn_line1 = new javax.swing.JPanel();
         lb_icon = new javax.swing.JLabel();
         lb_Dashboard = new javax.swing.JLabel();
         menu2 = new javax.swing.JPanel();
-        pn_line1 = new javax.swing.JPanel();
+        pn_line2 = new javax.swing.JPanel();
         lb_icon1 = new javax.swing.JLabel();
         lb_Dashboard1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         menu3 = new javax.swing.JPanel();
-        pn_line2 = new javax.swing.JPanel();
+        pn_line3 = new javax.swing.JPanel();
         lb_icon2 = new javax.swing.JLabel();
         lb_Dashboard2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         menu4 = new javax.swing.JPanel();
-        pn_line3 = new javax.swing.JPanel();
+        pn_line4 = new javax.swing.JPanel();
         lb_icon3 = new javax.swing.JLabel();
         lb_Dashboard3 = new javax.swing.JLabel();
         pn_kanan = new javax.swing.JPanel();
@@ -94,16 +121,16 @@ public class MenuUtama extends javax.swing.JFrame {
             }
         });
 
-        pn_line.setBackground(new java.awt.Color(255, 255, 255));
+        pn_line1.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout pn_lineLayout = new javax.swing.GroupLayout(pn_line);
-        pn_line.setLayout(pn_lineLayout);
-        pn_lineLayout.setHorizontalGroup(
-            pn_lineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pn_line1Layout = new javax.swing.GroupLayout(pn_line1);
+        pn_line1.setLayout(pn_line1Layout);
+        pn_line1Layout.setHorizontalGroup(
+            pn_line1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 20, Short.MAX_VALUE)
         );
-        pn_lineLayout.setVerticalGroup(
-            pn_lineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pn_line1Layout.setVerticalGroup(
+            pn_line1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -117,7 +144,7 @@ public class MenuUtama extends javax.swing.JFrame {
         menu1Layout.setHorizontalGroup(
             menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu1Layout.createSequentialGroup()
-                .addComponent(pn_line, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pn_line1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lb_icon)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -126,7 +153,7 @@ public class MenuUtama extends javax.swing.JFrame {
         );
         menu1Layout.setVerticalGroup(
             menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pn_line, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_line1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(menu1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,16 +175,16 @@ public class MenuUtama extends javax.swing.JFrame {
             }
         });
 
-        pn_line1.setBackground(new java.awt.Color(255, 255, 255));
+        pn_line2.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout pn_line1Layout = new javax.swing.GroupLayout(pn_line1);
-        pn_line1.setLayout(pn_line1Layout);
-        pn_line1Layout.setHorizontalGroup(
-            pn_line1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pn_line2Layout = new javax.swing.GroupLayout(pn_line2);
+        pn_line2.setLayout(pn_line2Layout);
+        pn_line2Layout.setHorizontalGroup(
+            pn_line2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 20, Short.MAX_VALUE)
         );
-        pn_line1Layout.setVerticalGroup(
-            pn_line1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pn_line2Layout.setVerticalGroup(
+            pn_line2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -171,7 +198,7 @@ public class MenuUtama extends javax.swing.JFrame {
         menu2Layout.setHorizontalGroup(
             menu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu2Layout.createSequentialGroup()
-                .addComponent(pn_line1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pn_line2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lb_icon1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -180,7 +207,7 @@ public class MenuUtama extends javax.swing.JFrame {
         );
         menu2Layout.setVerticalGroup(
             menu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pn_line1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_line2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(menu2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,16 +233,16 @@ public class MenuUtama extends javax.swing.JFrame {
             }
         });
 
-        pn_line2.setBackground(new java.awt.Color(255, 255, 255));
+        pn_line3.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout pn_line2Layout = new javax.swing.GroupLayout(pn_line2);
-        pn_line2.setLayout(pn_line2Layout);
-        pn_line2Layout.setHorizontalGroup(
-            pn_line2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pn_line3Layout = new javax.swing.GroupLayout(pn_line3);
+        pn_line3.setLayout(pn_line3Layout);
+        pn_line3Layout.setHorizontalGroup(
+            pn_line3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 20, Short.MAX_VALUE)
         );
-        pn_line2Layout.setVerticalGroup(
-            pn_line2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pn_line3Layout.setVerticalGroup(
+            pn_line3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -229,7 +256,7 @@ public class MenuUtama extends javax.swing.JFrame {
         menu3Layout.setHorizontalGroup(
             menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu3Layout.createSequentialGroup()
-                .addComponent(pn_line2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pn_line3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lb_icon2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -238,7 +265,7 @@ public class MenuUtama extends javax.swing.JFrame {
         );
         menu3Layout.setVerticalGroup(
             menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pn_line2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_line3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(menu3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,16 +291,16 @@ public class MenuUtama extends javax.swing.JFrame {
             }
         });
 
-        pn_line3.setBackground(new java.awt.Color(255, 255, 255));
+        pn_line4.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout pn_line3Layout = new javax.swing.GroupLayout(pn_line3);
-        pn_line3.setLayout(pn_line3Layout);
-        pn_line3Layout.setHorizontalGroup(
-            pn_line3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pn_line4Layout = new javax.swing.GroupLayout(pn_line4);
+        pn_line4.setLayout(pn_line4Layout);
+        pn_line4Layout.setHorizontalGroup(
+            pn_line4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 20, Short.MAX_VALUE)
         );
-        pn_line3Layout.setVerticalGroup(
-            pn_line3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pn_line4Layout.setVerticalGroup(
+            pn_line4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -287,7 +314,7 @@ public class MenuUtama extends javax.swing.JFrame {
         menu4Layout.setHorizontalGroup(
             menu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu4Layout.createSequentialGroup()
-                .addComponent(pn_line3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pn_line4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lb_icon3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -296,7 +323,7 @@ public class MenuUtama extends javax.swing.JFrame {
         );
         menu4Layout.setVerticalGroup(
             menu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pn_line3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_line4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(menu4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,22 +429,18 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void menu1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1MouseEntered
         menu1.setBackground(new Color(250,250,250));
-        pn_line.setBackground(new Color(0,153,204));
+        pn_line1.setBackground(new Color(0,153,204));
     }//GEN-LAST:event_menu1MouseEntered
 
     private void menu1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1MouseExited
         menu1.setBackground(new Color(255,255,255));
-        pn_line.setBackground(new Color(255,255,255));
+        pn_line1.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_menu1MouseExited
 
     private void menu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1MouseClicked
         menu1.setBackground(new Color(240,240,240));
-        pn_line.setBackground(new Color(0,153,204));
-        
-        pn_content.removeAll();
-        pn_content.add(new DashboardMember());
-        pn_content.repaint();
-        pn_content.revalidate();
+        pn_line1.setBackground(new Color(0,153,204));
+        setTampilanMenu("menu1");
     }//GEN-LAST:event_menu1MouseClicked
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -432,39 +455,50 @@ public class MenuUtama extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseDragged
 
     private void menu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu2MouseClicked
-        // TODO add your handling code here:
+        menu2.setBackground(new Color(240,240,240));
+        pn_line2.setBackground(new Color(0,153,204));
+        setTampilanMenu("menu2");
     }//GEN-LAST:event_menu2MouseClicked
 
     private void menu2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu2MouseEntered
-        // TODO add your handling code here:
+        menu2.setBackground(new Color(250,250,250));
+        pn_line2.setBackground(new Color(0,153,204));
     }//GEN-LAST:event_menu2MouseEntered
 
     private void menu2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu2MouseExited
-        // TODO add your handling code here:
+        menu2.setBackground(new Color(255,255,255));
+        pn_line2.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_menu2MouseExited
 
     private void menu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu3MouseClicked
-        // TODO add your handling code here:
+        menu3.setBackground(new Color(240,240,240));
+        pn_line3.setBackground(new Color(0,153,204));
+        setTampilanMenu("menu3");
     }//GEN-LAST:event_menu3MouseClicked
 
     private void menu3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu3MouseEntered
-        // TODO add your handling code here:
+        menu3.setBackground(new Color(250,250,250));
+        pn_line3.setBackground(new Color(0,153,204));
     }//GEN-LAST:event_menu3MouseEntered
 
     private void menu3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu3MouseExited
-        // TODO add your handling code here:
+        menu3.setBackground(new Color(255,255,255));
+        pn_line3.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_menu3MouseExited
 
     private void menu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu4MouseClicked
-        // TODO add your handling code here:
+        menu4.setBackground(new Color(240,240,240));
+        pn_line4.setBackground(new Color(0,153,204));
     }//GEN-LAST:event_menu4MouseClicked
 
     private void menu4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu4MouseEntered
-        // TODO add your handling code here:
+        menu4.setBackground(new Color(250,250,250));
+        pn_line4.setBackground(new Color(0,153,204));
     }//GEN-LAST:event_menu4MouseEntered
 
     private void menu4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu4MouseExited
-        // TODO add your handling code here:
+        menu4.setBackground(new Color(255,255,255));
+        pn_line4.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_menu4MouseExited
 
     /**
@@ -523,10 +557,10 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JPanel menu4;
     private javax.swing.JPanel pn_content;
     private javax.swing.JPanel pn_kanan;
-    private javax.swing.JPanel pn_line;
     private javax.swing.JPanel pn_line1;
     private javax.swing.JPanel pn_line2;
     private javax.swing.JPanel pn_line3;
+    private javax.swing.JPanel pn_line4;
     private javax.swing.JPanel pn_navbar;
     private javax.swing.JPanel pn_sidebar;
     // End of variables declaration//GEN-END:variables
