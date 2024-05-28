@@ -12,11 +12,11 @@ import view.DashboardMember;
  *
  * @author zidan
  */
-public class MenuUtama extends javax.swing.JFrame {
+public class MenuUtamaMember extends javax.swing.JFrame {
 
     int xx, xy;
     
-    public MenuUtama() {
+    public MenuUtamaMember() {
         initComponents();
         pn_content.removeAll();
         pn_content.add(new DashboardMember());
@@ -249,7 +249,7 @@ public class MenuUtama extends javax.swing.JFrame {
         lb_icon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/icons8_Books_30px.png"))); // NOI18N
 
         lb_Dashboard2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lb_Dashboard2.setText("Peminjaman Buku");
+        lb_Dashboard2.setText("Daftar Pinjaman");
 
         javax.swing.GroupLayout menu3Layout = new javax.swing.GroupLayout(menu3);
         menu3.setLayout(menu3Layout);
@@ -518,20 +518,23 @@ public class MenuUtama extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuUtama.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUtamaMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuUtama.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUtamaMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuUtama.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUtamaMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuUtama.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUtamaMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuUtama().setVisible(true);
+                new MenuUtamaMember().setVisible(true);
             }
         });
     }

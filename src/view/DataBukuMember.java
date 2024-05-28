@@ -17,6 +17,18 @@ public class DataBukuMember extends javax.swing.JPanel {
     public DataBukuMember() {
         initComponents();
     }
+    
+    int halaman = 1;
+    
+    public void pagination(String flag, int halaman){
+        if(flag == "next"){
+            this.halaman += 1;
+            lb_halaman.setText(Integer.toString(this.halaman));
+        } else if (flag == "prev" && halaman != 1 ) {
+            this.halaman -= 1;
+            lb_halaman.setText(Integer.toString(this.halaman));
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,31 +41,34 @@ public class DataBukuMember extends javax.swing.JPanel {
 
         pn_background = new javax.swing.JPanel();
         pn_book1 = new custom.Custom_JPanelRounded();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        judul1 = new javax.swing.JLabel();
+        penulis1 = new javax.swing.JLabel();
         pn_book2 = new custom.Custom_JPanelRounded();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        judul2 = new javax.swing.JLabel();
+        penulis2 = new javax.swing.JLabel();
         pn_book3 = new custom.Custom_JPanelRounded();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        pn_book4 = new custom.Custom_JPanelRounded();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        pn_book6 = new custom.Custom_JPanelRounded();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        pn_book5 = new custom.Custom_JPanelRounded();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        pn_book7 = new custom.Custom_JPanelRounded();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        judul3 = new javax.swing.JLabel();
+        penulis3 = new javax.swing.JLabel();
         pn_book8 = new custom.Custom_JPanelRounded();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        judul8 = new javax.swing.JLabel();
+        penulis8 = new javax.swing.JLabel();
+        pn_book5 = new custom.Custom_JPanelRounded();
+        judul5 = new javax.swing.JLabel();
+        penulis5 = new javax.swing.JLabel();
+        pn_book4 = new custom.Custom_JPanelRounded();
+        judul4 = new javax.swing.JLabel();
+        penulis4 = new javax.swing.JLabel();
+        pn_book6 = new custom.Custom_JPanelRounded();
+        judul6 = new javax.swing.JLabel();
+        penulis6 = new javax.swing.JLabel();
+        pn_book7 = new custom.Custom_JPanelRounded();
+        judul7 = new javax.swing.JLabel();
+        penulis7 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        lb_halaman = new javax.swing.JLabel();
+        btm_next = new javax.swing.JLabel();
+        btn_prev = new javax.swing.JLabel();
 
         pn_background.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -62,10 +77,15 @@ public class DataBukuMember extends javax.swing.JPanel {
         pn_book1.setRoundBottomRight(10);
         pn_book1.setRoundTopLeft(10);
         pn_book1.setRoundTopRight(10);
+        pn_book1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pn_book1MouseClicked(evt);
+            }
+        });
 
-        jLabel1.setText("jLabel1");
+        judul1.setText("jLabel1");
 
-        jLabel2.setText("jLabel2");
+        penulis1.setText("jLabel2");
 
         javax.swing.GroupLayout pn_book1Layout = new javax.swing.GroupLayout(pn_book1);
         pn_book1.setLayout(pn_book1Layout);
@@ -74,17 +94,17 @@ public class DataBukuMember extends javax.swing.JPanel {
             .addGroup(pn_book1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(pn_book1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(penulis1)
+                    .addComponent(judul1))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         pn_book1Layout.setVerticalGroup(
             pn_book1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_book1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel1)
+                .addComponent(judul1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(penulis1)
                 .addGap(29, 29, 29))
         );
 
@@ -94,9 +114,9 @@ public class DataBukuMember extends javax.swing.JPanel {
         pn_book2.setRoundTopLeft(10);
         pn_book2.setRoundTopRight(10);
 
-        jLabel3.setText("jLabel3");
+        judul2.setText("jLabel3");
 
-        jLabel4.setText("jLabel4");
+        penulis2.setText("jLabel4");
 
         javax.swing.GroupLayout pn_book2Layout = new javax.swing.GroupLayout(pn_book2);
         pn_book2.setLayout(pn_book2Layout);
@@ -105,17 +125,17 @@ public class DataBukuMember extends javax.swing.JPanel {
             .addGroup(pn_book2Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(pn_book2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
+                    .addComponent(penulis2)
+                    .addComponent(judul2))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         pn_book2Layout.setVerticalGroup(
             pn_book2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_book2Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel3)
+                .addComponent(judul2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addComponent(penulis2)
                 .addGap(29, 29, 29))
         );
 
@@ -125,9 +145,9 @@ public class DataBukuMember extends javax.swing.JPanel {
         pn_book3.setRoundTopLeft(10);
         pn_book3.setRoundTopRight(10);
 
-        jLabel5.setText("jLabel5");
+        judul3.setText("jLabel5");
 
-        jLabel6.setText("jLabel6");
+        penulis3.setText("jLabel6");
 
         javax.swing.GroupLayout pn_book3Layout = new javax.swing.GroupLayout(pn_book3);
         pn_book3.setLayout(pn_book3Layout);
@@ -136,142 +156,18 @@ public class DataBukuMember extends javax.swing.JPanel {
             .addGroup(pn_book3Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(pn_book3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5))
+                    .addComponent(penulis3)
+                    .addComponent(judul3))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         pn_book3Layout.setVerticalGroup(
             pn_book3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_book3Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel5)
+                .addComponent(judul3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addComponent(jLabel6)
+                .addComponent(penulis3)
                 .addGap(31, 31, 31))
-        );
-
-        pn_book4.setBackground(new java.awt.Color(0, 153, 204));
-        pn_book4.setRoundBottomLeft(10);
-        pn_book4.setRoundBottomRight(10);
-        pn_book4.setRoundTopLeft(10);
-        pn_book4.setRoundTopRight(10);
-
-        jLabel9.setText("jLabel9");
-
-        jLabel10.setText("jLabel10");
-
-        javax.swing.GroupLayout pn_book4Layout = new javax.swing.GroupLayout(pn_book4);
-        pn_book4.setLayout(pn_book4Layout);
-        pn_book4Layout.setHorizontalGroup(
-            pn_book4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_book4Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(pn_book4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-        pn_book4Layout.setVerticalGroup(
-            pn_book4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_book4Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addGap(32, 32, 32))
-        );
-
-        pn_book6.setBackground(new java.awt.Color(0, 153, 204));
-        pn_book6.setRoundBottomLeft(10);
-        pn_book6.setRoundBottomRight(10);
-        pn_book6.setRoundTopLeft(10);
-        pn_book6.setRoundTopRight(10);
-
-        jLabel15.setText("jLabel15");
-
-        jLabel16.setText("jLabel16");
-
-        javax.swing.GroupLayout pn_book6Layout = new javax.swing.GroupLayout(pn_book6);
-        pn_book6.setLayout(pn_book6Layout);
-        pn_book6Layout.setHorizontalGroup(
-            pn_book6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_book6Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(pn_book6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel15))
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-        pn_book6Layout.setVerticalGroup(
-            pn_book6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_book6Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addComponent(jLabel16)
-                .addGap(27, 27, 27))
-        );
-
-        pn_book5.setBackground(new java.awt.Color(0, 153, 204));
-        pn_book5.setRoundBottomLeft(10);
-        pn_book5.setRoundBottomRight(10);
-        pn_book5.setRoundTopLeft(10);
-        pn_book5.setRoundTopRight(10);
-
-        jLabel7.setText("jLabel7");
-
-        jLabel8.setText("jLabel8");
-
-        javax.swing.GroupLayout pn_book5Layout = new javax.swing.GroupLayout(pn_book5);
-        pn_book5.setLayout(pn_book5Layout);
-        pn_book5Layout.setHorizontalGroup(
-            pn_book5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_book5Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(pn_book5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7))
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-        pn_book5Layout.setVerticalGroup(
-            pn_book5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_book5Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(27, 27, 27))
-        );
-
-        pn_book7.setBackground(new java.awt.Color(0, 153, 204));
-        pn_book7.setRoundBottomLeft(10);
-        pn_book7.setRoundBottomRight(10);
-        pn_book7.setRoundTopLeft(10);
-        pn_book7.setRoundTopRight(10);
-
-        jLabel13.setText("jLabel13");
-
-        jLabel14.setText("jLabel14");
-
-        javax.swing.GroupLayout pn_book7Layout = new javax.swing.GroupLayout(pn_book7);
-        pn_book7.setLayout(pn_book7Layout);
-        pn_book7Layout.setHorizontalGroup(
-            pn_book7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_book7Layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addGroup(pn_book7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel13))
-                .addGap(44, 44, 44))
-        );
-        pn_book7Layout.setVerticalGroup(
-            pn_book7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_book7Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(jLabel14)
-                .addGap(37, 37, 37))
         );
 
         pn_book8.setBackground(new java.awt.Color(0, 153, 204));
@@ -280,28 +176,152 @@ public class DataBukuMember extends javax.swing.JPanel {
         pn_book8.setRoundTopLeft(10);
         pn_book8.setRoundTopRight(10);
 
-        jLabel11.setText("jLabel11");
+        judul8.setText("jLabel9");
 
-        jLabel12.setText("jLabel12");
+        penulis8.setText("jLabel10");
 
         javax.swing.GroupLayout pn_book8Layout = new javax.swing.GroupLayout(pn_book8);
         pn_book8.setLayout(pn_book8Layout);
         pn_book8Layout.setHorizontalGroup(
             pn_book8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_book8Layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
-                .addGroup(pn_book8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel11))
-                .addGap(45, 45, 45))
+            .addGroup(pn_book8Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(pn_book8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(penulis8)
+                    .addComponent(judul8))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         pn_book8Layout.setVerticalGroup(
             pn_book8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_book8Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel11)
+                .addComponent(judul8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addComponent(penulis8)
+                .addGap(32, 32, 32))
+        );
+
+        pn_book5.setBackground(new java.awt.Color(0, 153, 204));
+        pn_book5.setRoundBottomLeft(10);
+        pn_book5.setRoundBottomRight(10);
+        pn_book5.setRoundTopLeft(10);
+        pn_book5.setRoundTopRight(10);
+
+        judul5.setText("jLabel15");
+
+        penulis5.setText("jLabel16");
+
+        javax.swing.GroupLayout pn_book5Layout = new javax.swing.GroupLayout(pn_book5);
+        pn_book5.setLayout(pn_book5Layout);
+        pn_book5Layout.setHorizontalGroup(
+            pn_book5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_book5Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(pn_book5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(penulis5)
+                    .addComponent(judul5))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        pn_book5Layout.setVerticalGroup(
+            pn_book5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_book5Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(judul5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addComponent(penulis5)
+                .addGap(27, 27, 27))
+        );
+
+        pn_book4.setBackground(new java.awt.Color(0, 153, 204));
+        pn_book4.setRoundBottomLeft(10);
+        pn_book4.setRoundBottomRight(10);
+        pn_book4.setRoundTopLeft(10);
+        pn_book4.setRoundTopRight(10);
+
+        judul4.setText("jLabel7");
+
+        penulis4.setText("jLabel8");
+
+        javax.swing.GroupLayout pn_book4Layout = new javax.swing.GroupLayout(pn_book4);
+        pn_book4.setLayout(pn_book4Layout);
+        pn_book4Layout.setHorizontalGroup(
+            pn_book4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_book4Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(pn_book4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(penulis4)
+                    .addComponent(judul4))
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        pn_book4Layout.setVerticalGroup(
+            pn_book4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_book4Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(judul4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addComponent(penulis4)
+                .addGap(27, 27, 27))
+        );
+
+        pn_book6.setBackground(new java.awt.Color(0, 153, 204));
+        pn_book6.setRoundBottomLeft(10);
+        pn_book6.setRoundBottomRight(10);
+        pn_book6.setRoundTopLeft(10);
+        pn_book6.setRoundTopRight(10);
+
+        judul6.setText("jLabel13");
+
+        penulis6.setText("jLabel14");
+
+        javax.swing.GroupLayout pn_book6Layout = new javax.swing.GroupLayout(pn_book6);
+        pn_book6.setLayout(pn_book6Layout);
+        pn_book6Layout.setHorizontalGroup(
+            pn_book6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_book6Layout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addGroup(pn_book6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(penulis6)
+                    .addComponent(judul6))
+                .addGap(44, 44, 44))
+        );
+        pn_book6Layout.setVerticalGroup(
+            pn_book6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_book6Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(judul6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(penulis6)
+                .addGap(37, 37, 37))
+        );
+
+        pn_book7.setBackground(new java.awt.Color(0, 153, 204));
+        pn_book7.setRoundBottomLeft(10);
+        pn_book7.setRoundBottomRight(10);
+        pn_book7.setRoundTopLeft(10);
+        pn_book7.setRoundTopRight(10);
+
+        judul7.setText("jLabel11");
+
+        penulis7.setText("jLabel12");
+
+        javax.swing.GroupLayout pn_book7Layout = new javax.swing.GroupLayout(pn_book7);
+        pn_book7.setLayout(pn_book7Layout);
+        pn_book7Layout.setHorizontalGroup(
+            pn_book7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_book7Layout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addGroup(pn_book7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(penulis7)
+                    .addComponent(judul7))
+                .addGap(45, 45, 45))
+        );
+        pn_book7Layout.setVerticalGroup(
+            pn_book7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_book7Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(judul7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addComponent(jLabel12)
+                .addComponent(penulis7)
                 .addGap(33, 33, 33))
         );
 
@@ -314,6 +334,25 @@ public class DataBukuMember extends javax.swing.JPanel {
 
         jButton1.setText("Cari");
 
+        lb_halaman.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lb_halaman.setText("1");
+
+        btm_next.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btm_next.setText(">");
+        btm_next.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btm_nextMouseClicked(evt);
+            }
+        });
+
+        btn_prev.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_prev.setText("<");
+        btn_prev.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_prevMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_backgroundLayout = new javax.swing.GroupLayout(pn_background);
         pn_background.setLayout(pn_backgroundLayout);
         pn_backgroundLayout.setHorizontalGroup(
@@ -322,47 +361,63 @@ public class DataBukuMember extends javax.swing.JPanel {
                 .addGap(82, 82, 82)
                 .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_backgroundLayout.createSequentialGroup()
-                        .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pn_book1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pn_book6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(106, 106, 106)
-                        .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pn_book2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pn_book7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pn_book3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pn_book8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(98, 98, 98)
-                        .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pn_book4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pn_book5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pn_backgroundLayout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                    .addGroup(pn_backgroundLayout.createSequentialGroup()
+                        .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_prev)
+                            .addGroup(pn_backgroundLayout.createSequentialGroup()
+                                .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pn_book5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pn_book1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(106, 106, 106)
+                                .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pn_book2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pn_book6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(53, 53, 53)
+                        .addComponent(lb_halaman)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_backgroundLayout.createSequentialGroup()
+                                .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pn_book3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pn_book7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pn_backgroundLayout.createSequentialGroup()
+                                        .addGap(98, 98, 98)
+                                        .addComponent(pn_book8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_backgroundLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(pn_book4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btm_next))))
                 .addGap(84, 84, 84))
         );
         pn_backgroundLayout.setVerticalGroup(
             pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_backgroundLayout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addGap(35, 35, 35)
+                .addGap(44, 44, 44)
+                .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
                 .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pn_book2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pn_book1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pn_book3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pn_book5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83)
+                    .addComponent(pn_book2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pn_book1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pn_book3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pn_book4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
                 .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pn_book7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pn_book6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pn_book8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pn_book4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(88, 88, 88))
+                    .addComponent(pn_book7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pn_book8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pn_book6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pn_book5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(pn_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_halaman)
+                    .addComponent(btm_next)
+                    .addComponent(btn_prev))
+                .addGap(47, 47, 47))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -381,26 +436,42 @@ public class DataBukuMember extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void pn_book1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_book1MouseClicked
+        //new DetailBuku(judul1.getText()).setVisible(true);
+        new DetailBuku(null,true).setVisible(true);
+    }//GEN-LAST:event_pn_book1MouseClicked
+
+    private void btm_nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btm_nextMouseClicked
+        pagination("next",halaman);
+    }//GEN-LAST:event_btm_nextMouseClicked
+
+    private void btn_prevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prevMouseClicked
+        pagination("prev",halaman);
+    }//GEN-LAST:event_btn_prevMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btm_next;
+    private javax.swing.JLabel btn_prev;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel judul1;
+    private javax.swing.JLabel judul2;
+    private javax.swing.JLabel judul3;
+    private javax.swing.JLabel judul4;
+    private javax.swing.JLabel judul5;
+    private javax.swing.JLabel judul6;
+    private javax.swing.JLabel judul7;
+    private javax.swing.JLabel judul8;
+    private javax.swing.JLabel lb_halaman;
+    private javax.swing.JLabel penulis1;
+    private javax.swing.JLabel penulis2;
+    private javax.swing.JLabel penulis3;
+    private javax.swing.JLabel penulis4;
+    private javax.swing.JLabel penulis5;
+    private javax.swing.JLabel penulis6;
+    private javax.swing.JLabel penulis7;
+    private javax.swing.JLabel penulis8;
     private javax.swing.JPanel pn_background;
     private custom.Custom_JPanelRounded pn_book1;
     private custom.Custom_JPanelRounded pn_book2;

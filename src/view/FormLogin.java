@@ -224,7 +224,7 @@ public class FormLogin extends javax.swing.JFrame {
             DatabaseConnection.signIn(username, password);
             JOptionPane.showMessageDialog(this, "Sign in successful!");
             if (DatabaseConnection.signIn(username, password)) {
-                MenuUtama m = new MenuUtama();
+                MenuUtamaMember m = new MenuUtamaMember();
                 m.setVisible(true);
                 this.setVisible(false);
             }
