@@ -12,6 +12,9 @@ import service.DatabaseConnection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import model.Member;
+import model.User;
+import service.Parsing;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,63 +37,25 @@ public class FormDaftar extends javax.swing.JFrame {
         setBackground(new Color(0, 0, 0, 0));
     }
 
-    // Method untuk mendaftarkan pengguna baru
-    public static boolean registerUser(String username, String password, String nama, String alamat, Date tanggal_lahir, String kontak) {
-        try (Connection connection = DatabaseConnection.getConnection()) {
-            // Periksa apakah username sudah digunakan
-            String checkQuery = "SELECT * FROM member WHERE username = ?";
-            PreparedStatement checkStatement = connection.prepareStatement(checkQuery);
-            checkStatement.setString(1, username);
-            ResultSet resultSet = checkStatement.executeQuery();
-
-            // Jika username sudah ada, kembalikan false
-            if (resultSet.next()) {
-                System.out.println("Username sudah digunakan.");
-                return false;
-            }
-
-            java.util.Date utilDate = tanggal_lahir; // Mendapatkan java.util.Date
-            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // Konversi ke java.sql.Date
-
-            // Jika username belum digunakan, lakukan pendaftaran
-            String insertQuery = "INSERT INTO member (username, password, nama, alamat, tanggal_lahir, kontak) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
-            insertStatement.setString(1, username);
-            insertStatement.setString(2, password);
-            insertStatement.setString(3, nama);
-            insertStatement.setString(4, alamat);
-            insertStatement.setDate(5, sqlDate);
-            insertStatement.setString(6, kontak);
-            insertStatement.executeUpdate();
-            System.out.println("Anggota berhasil terdaftar.");
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+    
 
     private void register(String username, String password, String name, String address, Date dob, String contact) {
         // Implementation of registration process
         try {
-            registerUser(username, password, name, address, dob, contact);
-            JOptionPane.showMessageDialog(this, "Registration successful!");
+            Member member = new Member(username, password, address, name,  contact, dob );
+            if(member.register()){
+                JOptionPane.showMessageDialog(this, "Registration successful!");
+                openFormLogin();
+            } else {
+                JOptionPane.showMessageDialog(this, "Registration successful!");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Registration failed! Because " + e);
         }
 
     }
 
-    // Metode untuk mengonversi string menjadi objek Date
-    private Date getDateFromString(String dateString) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            return format.parse(dateString);
-        } catch (ParseException e) {
-            JOptionPane.showMessageDialog(this, "Please enter valid date", "Error", JOptionPane.ERROR_MESSAGE);
-            return null;
-        }
-    }
+   
 
     private void openFormLogin() {
         FormLogin login = new FormLogin();
@@ -323,7 +288,7 @@ public class FormDaftar extends javax.swing.JFrame {
         String password = new String(passwordTextField.getPassword());
         String name = namaTextField.getText();
         String address = alamatTextField.getText();
-        Date dob = getDateFromString(tanggalLahirTextField.getText());
+        Date dob = Parsing.getDateFromString(tanggalLahirTextField.getText(), this);
         String contact = noTelpTextField.getText();
         // Perform registration process here
         register(username, password, name, address, dob, contact);

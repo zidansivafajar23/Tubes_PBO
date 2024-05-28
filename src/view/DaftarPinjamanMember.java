@@ -5,6 +5,12 @@
  */
 package view;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+import service.DatabaseConnection;
+
 /**
  *
  * @author delll
@@ -16,6 +22,7 @@ public class DaftarPinjamanMember extends javax.swing.JPanel {
      */
     public DaftarPinjamanMember() {
         initComponents();
+        jTable1.setModel(getTableModel());
     }
 
     /**
@@ -87,7 +94,53 @@ public class DaftarPinjamanMember extends javax.swing.JPanel {
                 .addContainerGap(303, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+public DefaultTableModel getTableModel() {
+        DefaultTableModel model = new DefaultTableModel();
 
+        // Add columns to model
+        model.addColumn("ID Buku");
+        model.addColumn("Judul");
+        model.addColumn("Penulis");
+        model.addColumn("Kategori");
+        model.addColumn("Deskripsi");
+        model.addColumn("Tahun Terbit");
+        model.addColumn("Stok");
+
+        DatabaseConnection db = null;
+        try  {
+            db = new DatabaseConnection();
+            Statement stmt = DatabaseConnection.conn.createStatement();
+            String query = "SELECT B.id_buku, B.Judul, "
+                    + "GROUP_CONCAT(P.Nama ORDER BY P.Nama SEPARATOR ', ') AS Penulis, "
+                    + "GROUP_CONCAT(K.Nama_kategori ORDER BY K.Nama_kategori SEPARATOR ', ') AS Kategori, "
+                    + "B.Deskripsi, B.Tahun_terbit, B.Stok "
+                    + "FROM Buku B "
+                    + "LEFT JOIN Penulis_Buku PB ON B.id_buku = PB.id_buku "
+                    + "LEFT JOIN Penulis P ON PB.id_penulis = P.id_penulis "
+                    + "LEFT JOIN Kategori_Buku KB ON B.id_buku = KB.id_buku "
+                    + "LEFT JOIN Kategori K ON KB.id_kategori = K.id_kategori "
+                    + "GROUP BY B.id_buku, B.Judul, B.Deskripsi, B.Tahun_terbit, B.Stok";
+            ResultSet resultSet = stmt.executeQuery(query);
+
+            // Iterate through result set and add rows to model
+            while (resultSet.next()) {
+                Object[] row = {
+                    resultSet.getInt("id_buku"),
+                    resultSet.getString("Judul"),
+                    resultSet.getString("Penulis"),
+                    resultSet.getString("Kategori"),
+                    resultSet.getString("Deskripsi"),
+                    resultSet.getInt("Tahun_terbit"),
+                    resultSet.getInt("Stok")
+                };
+                model.addRow(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return model;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

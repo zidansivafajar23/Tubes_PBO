@@ -5,7 +5,14 @@
  */
 package model;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
+import service.DatabaseConnection;
+import static service.DatabaseConnection.conn;
 
 /**
  *
@@ -20,18 +27,22 @@ public abstract class User {
     private String nama;
     private int umur;
     private String telepon;
-    private Date tngglLahir;
+    Date tanggalLahir;
     
     
     // Constructor, Getter, dan Setter
-    public User(String username, String password, String alamat, String nama, int umur, String telepon, Date tngglLahir) {
+    public User(String username, String password, String alamat, String nama, String telepon, Date tngglLahir) {
         this.username = username;
         this.password = password;
         this.alamat = alamat;
         this.nama = nama;
-        this.umur = umur;
         this.telepon = telepon;
-        this.tngglLahir = tngglLahir;
+        this.tanggalLahir = tngglLahir;
+    }
+    
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
     }
 
     public String getUsername() {
@@ -83,16 +94,100 @@ public abstract class User {
     }
 
     public Date getTngglLahir() {
-        return tngglLahir;
+        return tanggalLahir;
     }
 
     public void setTngglLahir(Date tngglLahir) {
-        this.tngglLahir = tngglLahir;
+        this.tanggalLahir = tngglLahir;
     }
     
     // Abstract Method dan Regular Method
     
+    // Method untuk mendaftarkan pengguna baru
+    public boolean register() {
+        DatabaseConnection db = null;
+        try {
+            db = new DatabaseConnection();
+            // Periksa apakah username sudah digunakan
+            String checkQuery = "SELECT * FROM pengguna WHERE username = ?";
+            PreparedStatement checkStatement = DatabaseConnection.conn.prepareStatement(checkQuery);
+            checkStatement.setString(1, username);
+            ResultSet resultSet = checkStatement.executeQuery();
+
+            // Jika username sudah ada, kembalikan false
+            if (resultSet.next()) {
+                System.out.println("Username sudah digunakan.");
+                return false;
+            }
+
+            java.util.Date utilDate = this.tanggalLahir; // Mendapatkan java.util.Date
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // Konversi ke java.sql.Date
+
+            // Jika username belum digunakan, lakukan pendaftaran
+            
+            String insertQuery = "INSERT INTO pengguna (username, password, nama, alamat, tanggal_lahir, no_hp, role) VALUES (?, ?, ?, ?, ?, ?, 'Member')";
+            PreparedStatement insertStatement = DatabaseConnection.conn.prepareStatement(insertQuery);
+            insertStatement.setString(1, this.username);
+            insertStatement.setString(2, this.password);
+            insertStatement.setString(3, this.nama);
+            insertStatement.setString(4, this.alamat);
+            insertStatement.setDate(5, sqlDate);
+            insertStatement.setString(6, this.telepon);
+            insertStatement.executeUpdate();
+            System.out.println("Anggota berhasil terdaftar.");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }   finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
+    }
     
+    // Sign In
+    public boolean signIn(String username, String password) {
+        DatabaseConnection db = null;
+        try {
+            db = new DatabaseConnection();
+            // Query untuk memeriksa apakah pengguna ada di database
+            String query = "SELECT * FROM pengguna WHERE username = ? AND password = ?";
+            PreparedStatement statement = DatabaseConnection.conn.prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
+
+            // Jika pengguna ditemukan, update status sign in ke "true"
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
+        // Jika pengguna tidak ditemukan, kembalikan false
+        return false;
+    }
     
-    
+     public static String getRole(String username) {
+         DatabaseConnection db = null;
+        String query = "SELECT Role FROM Pengguna WHERE username = ?";
+        try  {
+            db = new DatabaseConnection();
+            PreparedStatement stmt = DatabaseConnection.conn.prepareStatement(query);
+            stmt.setString(1, username);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("Role");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

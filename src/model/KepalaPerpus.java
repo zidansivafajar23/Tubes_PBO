@@ -11,13 +11,39 @@ import java.util.Date;
  *
  * @author zidan
  */
-public class KepalaPerpus extends User {
+public class KepalaPerpus extends User implements Pustakawan{
     //Constructor
-    public KepalaPerpus(String username, String password, String alamat, String nama, int umur, String telepon, Date tngglLahir) {
-        super(username, password, alamat, nama, umur, telepon, tngglLahir);
+    public KepalaPerpus(String username, String password, String alamat, String nama, String telepon, Date tanggalLahir) {
+        super(username, password, alamat, nama, telepon, tanggalLahir);
     }
     
     
     //Method
+    
+
+    @Override
+    public void lihatDataAnggota() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void lihatDataBuku() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void tambahDataBuku() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void hapusDataBuku() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void ubahDataBuku() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
