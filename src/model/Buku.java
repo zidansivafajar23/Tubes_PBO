@@ -5,6 +5,11 @@
  */
 package model;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import service.DatabaseConnection;
+
 /**
  *
  * @author zidan
@@ -80,7 +85,30 @@ public class Buku {
 
     
     //Method
-    
+    public boolean checkAvailabilityByStock() {
+        boolean available = false;
+        DatabaseConnection dbConnection = null;
+        try {
+            dbConnection = new DatabaseConnection();
+            String query = "SELECT stock FROM buku WHERE id_buku = ?";
+            PreparedStatement stmt = dbConnection.conn.prepareStatement(query);
+            stmt.setInt(1, getId_buku()); // Gunakan method getter
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                int stock = rs.getInt("stock");
+                if (stock > 0) {
+                    available = true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (dbConnection != null) {
+                dbConnection.closeConnection();
+            }
+        }
+        return available;
+    }
     
     
 }
