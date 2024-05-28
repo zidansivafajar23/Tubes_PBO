@@ -10,5 +10,9 @@ package model;
  * @author zidan
  */
 public interface Pustakawan {
-    
+    public abstract void lihatDataAnggota();
+    public abstract void lihatDataBuku();
+    public abstract void tambahDataBuku();
+    public abstract void hapusDataBuku();
+    public abstract void ubahDataBuku();
 }

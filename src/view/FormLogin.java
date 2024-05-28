@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import model.User;
 import service.DatabaseConnection;
 
 /*
@@ -221,10 +222,10 @@ public class FormLogin extends javax.swing.JFrame {
             String username = usernameTextField.getText();
             String password = new String(passwordField.getPassword());
             // Perform sign in process here
-            DatabaseConnection.signIn(username, password);
+            User user = new User(username, password) {};
             JOptionPane.showMessageDialog(this, "Sign in successful!");
-            if (DatabaseConnection.signIn(username, password)) {
-                MenuUtama m = new MenuUtama();
+            if (user.signIn(username, password)) {
+                MenuUtamaMember m = new MenuUtamaMember();
                 m.setVisible(true);
                 this.setVisible(false);
             }

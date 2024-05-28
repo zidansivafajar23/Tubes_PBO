@@ -19,10 +19,8 @@ public class Member extends User {
     
     
     // Constructor
-    public Member(String username, String password, String alamat, String nama, int umur, String telepon, Date tngglLahir) {
-        super(username, password, alamat, nama, umur, telepon, tngglLahir);
+    public Member(String username, String password, String alamat, String nama, String telepon, Date tngglLahir) {
+        super(username, password, alamat, nama, telepon, tngglLahir);
     }
     
-    
-    // Method
 }

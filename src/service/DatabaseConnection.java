@@ -24,12 +24,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DatabaseConnection {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3308/perpus";
+    private static final String DB_URL = "jdbc:mysql://localhost:3308/perpustakaan";
     private static final String USER = "root"; // Default username di XAMPP
     private static final String PASSWORD = ""; // Default password di XAMPP
-    static Connection conn;
-    static Statement stmt;
-    static ResultSet rs;
+    public static Connection conn;
+    public static Statement stmt;
+    public static ResultSet rs;
 
     public DatabaseConnection() throws SQLException {
         try {
@@ -56,6 +56,16 @@ public class DatabaseConnection {
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, "Error :" + e.getMessage(), "Communication Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
+    public void closeConnection(){
+        try {
+            if (rs != null) rs.close();
+            if (stmt != null) stmt.close();
+            if (conn != null) conn.close();
+        } catch (SQLException e){
+            System.out.println("Error: " + e.getMessage());
         }
     }
 
