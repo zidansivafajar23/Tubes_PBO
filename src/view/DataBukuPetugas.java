@@ -25,7 +25,7 @@ public class DataBukuPetugas extends javax.swing.JPanel {
     public DataBukuPetugas() {
         
         initComponents();
-        jTable1.setModel(getTableModel());
+        //jTable1.setModel(getTableModel());
     }
 
     /**
