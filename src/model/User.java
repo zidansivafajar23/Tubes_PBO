@@ -173,21 +173,38 @@ public abstract class User {
         return false;
     }
     
-     public static String getRole(String username) {
-         DatabaseConnection db = null;
-        String query = "SELECT Role FROM Pengguna WHERE username = ?";
-        try  {
-            db = new DatabaseConnection();
-            PreparedStatement stmt = DatabaseConnection.conn.prepareStatement(query);
+     public String getRole(String username) {
+    DatabaseConnection db = null;
+    String role = null;
+    String query = "SELECT Role FROM Pengguna WHERE username = ?";
+    
+    try {
+        db = new DatabaseConnection();
+        if (db != null) {
+            PreparedStatement stmt = db.conn.prepareStatement(query);
             stmt.setString(1, username);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return rs.getString("Role");
+                role = rs.getString("Role");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            
+            // Close resources
+            rs.close();
+            stmt.close();
+        } else {
+            System.err.println("Failed to establish a database connection.");
         }
-        return null;
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        if (db != null) {
+            db.closeConnection();  // Assuming DatabaseConnection has a close method to close the connection
+        }
     }
+         System.out.println(role);
+    
+    return role;
+}
+
 }
