@@ -32,7 +32,7 @@ public class MenuUtamaMember extends javax.swing.JFrame {
             pn_content.revalidate();
         } else if (namaMenu == "menu2"){
             pn_content.removeAll();
-            pn_content.add(new DataBukuPetugas());
+            pn_content.add(new DataBukuMember());
             pn_content.repaint();
             pn_content.revalidate();
         } else if (namaMenu == "menu3"){

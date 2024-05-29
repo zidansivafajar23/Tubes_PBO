@@ -17,7 +17,7 @@ public class Peminjaman {
     private Buku bukuDipinjam;
     private Date tanggalPinjam;
     private Date tanggalPengembalian;
-    private boolean pengembalian;
+    private String status;
     
     //Constructor, Getter, dan Setter
 
@@ -26,7 +26,6 @@ public class Peminjaman {
         this.bukuDipinjam = bukuDipinjam;
         this.tanggalPinjam = tanggalPinjam;
         this.tanggalPengembalian = tanggalPengembalian;
-        pengembalian = false;
     }
 
     public int getId_peminjaman() {
@@ -61,12 +60,12 @@ public class Peminjaman {
         this.tanggalPengembalian = tanggalPengembalian;
     }
 
-    public boolean isPengembalian() {
-        return pengembalian;
+    public String isPengembalian() {
+        return status;
     }
 
-    public void setPengembalian(boolean pengembalian) {
-        this.pengembalian = pengembalian;
+    public void setPengembalian(String status) {
+        this.status = status;
     }
     
     
