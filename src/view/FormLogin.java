@@ -25,7 +25,7 @@ public class FormLogin extends javax.swing.JFrame {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
     }
-    
+
     private void openFormDaftar() {
         FormDaftar daftar = new FormDaftar();
         daftar.setVisible(true);
@@ -222,14 +222,39 @@ public class FormLogin extends javax.swing.JFrame {
             String username = usernameTextField.getText();
             String password = new String(passwordField.getPassword());
             // Perform sign in process here
-            User user = new User(username, password) {};
-            JOptionPane.showMessageDialog(this, "Sign in successful!");
+            User user = new User(username, password) {
+            };
+
             if (user.signIn(username, password)) {
-                MenuUtamaMember m = new MenuUtamaMember();
-                m.setVisible(true);
+                
                 this.setVisible(false);
+                String role = user.getRole(username);
+                System.out.println(role);
+                switch (role) {
+                    case "member":
+                        MenuUtamaMember m = new MenuUtamaMember();
+                        m.setVisible(true);
+                        JOptionPane.showMessageDialog(m, "Sign in successful!");
+                        break;
+                    case "petugas":
+                        MenuUtamaPengurus p = new MenuUtamaPengurus();
+                        p.setVisible(true);
+                        JOptionPane.showMessageDialog(p, "Sign in successful!");
+                        break;
+                    case "kepala perpustakaan":
+                        MenuUtamaKepala k = new MenuUtamaKepala();
+                        k.setVisible(true);
+                    JOptionPane.showMessageDialog(k, "Sign in successful!");
+                        break;
+                  default:
+                        JOptionPane.showMessageDialog(this, "Unknown role: " + role);
+                        break;
+                }
+                
+                
             }
-        } catch (Exception e) {
+
+        } catch (Exception e) {                                                 
             JOptionPane.showMessageDialog(this, "Sign in failed! Because " + e);
         }
 
