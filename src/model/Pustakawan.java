@@ -5,14 +5,17 @@
  */
 package model;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author zidan
  */
 public interface Pustakawan {
     public abstract void lihatDataAnggota();
-    public abstract void lihatDataBuku();
+    public abstract DefaultTableModel lihatDataBuku();
     public abstract void tambahDataBuku();
     public abstract void hapusDataBuku();
     public abstract void ubahDataBuku();
+    public abstract boolean editDataBuku(String idBuku, String judul, String penulis, String penerbit, String tahunTerbit, String stok);
 }

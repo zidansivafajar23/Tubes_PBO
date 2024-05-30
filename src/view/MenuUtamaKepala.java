@@ -6,6 +6,8 @@
 package view;
 
 import java.awt.Color;
+import model.KepalaPerpus;
+import model.Member;
 import view.DashboardMember;
 
 /**
@@ -15,8 +17,10 @@ import view.DashboardMember;
 public class MenuUtamaKepala extends javax.swing.JFrame {
 
     int xx, xy;
+    KepalaPerpus user;
     
-    public MenuUtamaKepala() {
+    public MenuUtamaKepala(KepalaPerpus m) {
+        user = m;
         initComponents();
         pn_content.removeAll();
         pn_content.add(new DashboardMember());
@@ -32,7 +36,7 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
             pn_content.revalidate();
         } else if (namaMenu == "menu2"){
             pn_content.removeAll();
-            pn_content.add(new DataBukuPetugas());
+            pn_content.add(new DataBukuKepalaPerpustakaan(user));
             pn_content.repaint();
             pn_content.revalidate();
         } else if (namaMenu == "menu3"){
@@ -644,7 +648,7 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuUtamaKepala().setVisible(true);
+                new MenuUtamaKepala(null).setVisible(true);
             }
         });
     }

@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.Color;
+import model.Member;
 import view.DashboardMember;
 
 /**
@@ -15,8 +16,10 @@ import view.DashboardMember;
 public class MenuUtamaMember extends javax.swing.JFrame {
 
     int xx, xy;
+    Member member;
     
-    public MenuUtamaMember() {
+    public MenuUtamaMember(Member user) {
+        member = user;
         initComponents();
         pn_content.removeAll();
         pn_content.add(new DashboardMember());
@@ -534,7 +537,7 @@ public class MenuUtamaMember extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuUtamaMember().setVisible(true);
+                new MenuUtamaMember(null).setVisible(true);
             }
         });
     }

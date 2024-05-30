@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.sql.PreparedStatement;
@@ -10,36 +5,41 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import service.DatabaseConnection;
 
-/**
- *
- * @author zidan
- */
 public class Buku {
-    // Attribute
-    private int id_buku;
+    // Attributes
+    private String id_buku;
     private String judul;
-    private Penulis penulis;
-    private Penerbit penerbit;
+    private String penulis;
+    private String penerbit;
     private String tahunTerbit;
-    private int Stock;
-    
-    
-    // Constructor, Setter dan Getter
+    private String kategori;
+    private String stock;
 
-    public Buku(int id_buku, String judul, Penulis penulis, Penerbit penerbit, String tahunTerbit, int Stock) {
+    public Buku(String id_buku, String judul, String penulis, String penerbit, String tahunTerbit, String kategori, String stock) {
         this.id_buku = id_buku;
         this.judul = judul;
         this.penulis = penulis;
         this.penerbit = penerbit;
         this.tahunTerbit = tahunTerbit;
-        this.Stock = Stock;
+        this.kategori = kategori;
+        this.stock = stock;
     }
 
-    public int getId_buku() {
+    public String getKategori() {
+        return kategori;
+    }
+
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
+    }
+    
+
+
+    public String getId_buku() {
         return id_buku;
     }
 
-    public void setId_buku(int id_buku) {
+    public void setId_buku(String id_buku) {
         this.id_buku = id_buku;
     }
 
@@ -51,19 +51,19 @@ public class Buku {
         this.judul = judul;
     }
 
-    public Penulis getPenulis() {
+    public String getPenulis() {
         return penulis;
     }
 
-    public void setPenulis(Penulis penulis) {
+    public void setPenulis(String penulis) {
         this.penulis = penulis;
     }
 
-    public Penerbit getPenerbit() {
+    public String getPenerbit() {
         return penerbit;
     }
 
-    public void setPenerbit(Penerbit penerbit) {
+    public void setPenerbit(String penerbit) {
         this.penerbit = penerbit;
     }
 
@@ -75,16 +75,15 @@ public class Buku {
         this.tahunTerbit = tahunTerbit;
     }
 
-    public int getStock() {
-        return Stock;
+    public String getStock() {
+        return stock;
     }
 
-    public void setStock(int Stock) {
-        this.Stock = Stock;
+    public void setStock(String stock) {
+        this.stock = stock;
     }
 
-    
-    //Method
+    // Method
     public boolean checkAvailabilityByStock() {
         boolean available = false;
         DatabaseConnection dbConnection = null;
@@ -92,15 +91,15 @@ public class Buku {
             dbConnection = new DatabaseConnection();
             String query = "SELECT stock FROM buku WHERE id_buku = ?";
             PreparedStatement stmt = dbConnection.conn.prepareStatement(query);
-            stmt.setInt(1, getId_buku()); // Gunakan method getter
+            stmt.setString(1, getId_buku()); // Use getter method
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                int stock = rs.getInt("stock");
+                int stock = Integer.parseInt(rs.getString("stock"));
                 if (stock > 0) {
                     available = true;
                 }
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NumberFormatException e) {
             e.printStackTrace();
         } finally {
             if (dbConnection != null) {
@@ -109,6 +108,4 @@ public class Buku {
         }
         return available;
     }
-    
-    
 }
