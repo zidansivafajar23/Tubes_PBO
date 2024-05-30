@@ -96,7 +96,7 @@
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="365" max="32767" attributes="0"/>
+                  <EmptySpace pref="367" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
@@ -116,8 +116,8 @@
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="46" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -147,7 +147,7 @@
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="123" max="32767" attributes="0"/>
+                  <EmptySpace pref="118" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -158,7 +158,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="48" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Detail Member"/>
+            <Property name="text" type="java.lang.String" value="Detail Petugas"/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
         </Component>

@@ -56,7 +56,7 @@ public class DetailPetugas extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel1.setText("Detail Member");
+        jLabel1.setText("Detail Petugas");
         jLabel1.setAlignmentY(0.0F);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -139,7 +139,7 @@ public class DetailPetugas extends javax.swing.JPanel {
                         .addComponent(jLabel8)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(365, Short.MAX_VALUE)
+                .addContainerGap(367, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel16)
@@ -154,8 +154,8 @@ public class DetailPetugas extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addComponent(jLabel16)
                 .addGap(16, 16, 16)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addComponent(jLabel1)
+                .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel11))
@@ -179,7 +179,7 @@ public class DetailPetugas extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel14))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
