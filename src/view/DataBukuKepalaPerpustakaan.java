@@ -5,6 +5,12 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import model.Buku;
+import model.KepalaPerpus;
+import model.PengurusPerpus;
+import model.User;
+
 /**
  *
  * @author delll
@@ -14,7 +20,12 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
     /**
      * Creates new form DataBukuKepalaPerpustakaan
      */
-    public DataBukuKepalaPerpustakaan() {
+    User user;
+
+    public DataBukuKepalaPerpustakaan(KepalaPerpus p) {
+        user = p;
+        initComponents();
+        jTable1.setModel(p.lihatDataBuku());
         initComponents();
     }
 
@@ -130,7 +141,23 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
     }//GEN-LAST:event_TambahActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        new EditDataBuku(null, true).show();
+        int selectedRow = jTable1.getSelectedRow();
+
+        if (selectedRow != -1) {
+            // Correcting the indices and types
+            String id_buku = (String) jTable1.getValueAt(selectedRow, 0);
+            String judul = (String) jTable1.getValueAt(selectedRow, 1);
+            String penulis = (String) jTable1.getValueAt(selectedRow, 2);
+            String penerbit = (String) jTable1.getValueAt(selectedRow, 3);
+            String tahunTerbit = (String) jTable1.getValueAt(selectedRow, 4);
+            String kategori = (String) jTable1.getValueAt(selectedRow, 5);
+            String stok = (String) jTable1.getValueAt(selectedRow, 6);
+
+            Buku buku = new Buku(id_buku, judul, penulis, penerbit, tahunTerbit, kategori, stok);
+            new EditDataBuku(null, true, user, buku).show();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row to edit");
+        }
     }//GEN-LAST:event_EditActionPerformed
 
 

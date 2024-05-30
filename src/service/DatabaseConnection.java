@@ -63,7 +63,6 @@ public class DatabaseConnection {
         try {
             if (rs != null) rs.close();
             if (stmt != null) stmt.close();
-            if (conn != null) conn.close();
         } catch (SQLException e){
             System.out.println("Error: " + e.getMessage());
         }

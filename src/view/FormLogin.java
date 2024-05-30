@@ -2,6 +2,9 @@ package view;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import model.KepalaPerpus;
+import model.Member;
+import model.PengurusPerpus;
 import model.User;
 import service.DatabaseConnection;
 
@@ -232,17 +235,20 @@ public class FormLogin extends javax.swing.JFrame {
                 System.out.println(role);
                 switch (role) {
                     case "member":
-                        MenuUtamaMember m = new MenuUtamaMember();
+                        Member mm = new Member(username, password);
+                        MenuUtamaMember m = new MenuUtamaMember(mm);
                         m.setVisible(true);
                         JOptionPane.showMessageDialog(m, "Sign in successful!");
                         break;
                     case "petugas":
-                        MenuUtamaPengurus p = new MenuUtamaPengurus();
+                        PengurusPerpus pp = new PengurusPerpus(username, password);
+                        MenuUtamaPengurus p = new MenuUtamaPengurus(pp);
                         p.setVisible(true);
                         JOptionPane.showMessageDialog(p, "Sign in successful!");
                         break;
                     case "kepala perpustakaan":
-                        MenuUtamaKepala k = new MenuUtamaKepala();
+                        KepalaPerpus kp = new KepalaPerpus(username, password);
+                        MenuUtamaKepala k = new MenuUtamaKepala(kp);
                         k.setVisible(true);
                     JOptionPane.showMessageDialog(k, "Sign in successful!");
                         break;

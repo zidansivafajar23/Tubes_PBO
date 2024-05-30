@@ -6,6 +6,8 @@
 package view;
 
 import java.awt.Color;
+import model.KepalaPerpus;
+import model.PengurusPerpus;
 import view.DashboardMember;
 
 /**
@@ -15,8 +17,10 @@ import view.DashboardMember;
 public class MenuUtamaPengurus extends javax.swing.JFrame {
 
     int xx, xy;
+    PengurusPerpus user;
     
-    public MenuUtamaPengurus() {
+    public MenuUtamaPengurus(PengurusPerpus p) {
+        user = p;
         initComponents();
         pn_content.removeAll();
         pn_content.add(new DashboardMember());
@@ -32,7 +36,7 @@ public class MenuUtamaPengurus extends javax.swing.JFrame {
             pn_content.revalidate();
         } else if (namaMenu == "menu2"){
             pn_content.removeAll();
-            pn_content.add(new DataBukuPetugas());
+            pn_content.add(new DataBukuPetugas(user));
             pn_content.repaint();
             pn_content.revalidate();
         } else if (namaMenu == "menu3"){
@@ -620,7 +624,7 @@ public class MenuUtamaPengurus extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuUtamaPengurus().setVisible(true);
+                new MenuUtamaPengurus(null).setVisible(true);
             }
         });
     }

@@ -248,6 +248,7 @@ public class EditDataMember extends javax.swing.JDialog {
 
     private void SimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimpanActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_SimpanActionPerformed
 
     private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
