@@ -72,6 +72,7 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
         });
         jTable1.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         jButton3.setText("Tambah");
         jButton3.addActionListener(new java.awt.event.ActionListener() {

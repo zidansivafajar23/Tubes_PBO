@@ -9,12 +9,12 @@ package view;
  *
  * @author delll
  */
-public class InfoPeminjamPetugas extends javax.swing.JPanel {
+public class DaftarPeminjamanPetugas extends javax.swing.JPanel {
 
     /**
      * Creates new form InfoPeminjamPetugas
      */
-    public InfoPeminjamPetugas() {
+    public DaftarPeminjamanPetugas() {
         initComponents();
     }
 
