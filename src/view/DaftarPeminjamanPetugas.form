@@ -17,14 +17,12 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="362" max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" pref="108" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="488" max="-2" attributes="0"/>
+              <Component id="Tambah" min="-2" pref="108" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" pref="108" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton4" min="-2" pref="108" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton5" min="-2" pref="108" max="-2" attributes="0"/>
+              <Component id="Edit" min="-2" pref="108" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton6" min="-2" pref="108" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -43,10 +41,9 @@
               <Component id="jScrollPane1" min="-2" pref="347" max="-2" attributes="0"/>
               <EmptySpace pref="282" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton3" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="Tambah" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="jButton4" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="jButton5" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="Edit" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jButton6" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -65,8 +62,8 @@
         <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="20">
-                <Column editable="true" title="Member" type="java.lang.String">
+              <Table columnCount="5" rowCount="20">
+                <Column editable="true" title="ID Peminjaman" type="java.lang.String">
                   <Data value="Rizki Septian"/>
                   <Data value="null"/>
                   <Data value="null"/>
@@ -88,7 +85,7 @@
                   <Data value="null"/>
                   <Data value="null"/>
                 </Column>
-                <Column editable="true" title="Judul Buku" type="java.lang.String">
+                <Column editable="true" title="BukuDipinjam" type="java.lang.String">
                   <Data value="Little Prince"/>
                   <Data value="null"/>
                   <Data value="null"/>
@@ -110,7 +107,7 @@
                   <Data value="null"/>
                   <Data value="null"/>
                 </Column>
-                <Column editable="true" title="Tenggat Waktu" type="java.lang.Object">
+                <Column editable="true" title="TanggalPinjam" type="java.lang.Object">
                   <Data value="1950"/>
                   <Data value="null"/>
                   <Data value="null"/>
@@ -132,7 +129,38 @@
                   <Data value="null"/>
                   <Data value="null"/>
                 </Column>
+                <Column editable="true" title="TanggalPengembalian" type="java.lang.Object"/>
+                <Column editable="true" title="Status" type="java.lang.Object"/>
               </Table>
+            </Property>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="2">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+              </TableColumnModel>
             </Property>
             <Property name="columnSelectionAllowed" type="boolean" value="true"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -142,12 +170,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="Tambah">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tambah"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TambahActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
@@ -155,15 +183,13 @@
         <Property name="text" type="java.lang.String" value="Hapus"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="Edit">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Simpan"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
