@@ -5,12 +5,18 @@
  */
 package view;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Buku;
 import model.KepalaPerpus;
 import model.PengurusPerpus;
 import model.User;
-
+import service.DatabaseConnection;
 /**
  *
  * @author delll
@@ -22,11 +28,10 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
      */
     User user;
 
-    public DataBukuKepalaPerpustakaan(KepalaPerpus p) {
-        user = p;
+    public DataBukuKepalaPerpustakaan(KepalaPerpus kp) {
+        user = kp;
         initComponents();
-        jTable1.setModel(p.lihatDataBuku());
-        initComponents();
+        jTable1.setModel(kp.lihatDataBuku());
     }
 
     /**
@@ -43,7 +48,7 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
         Tambah = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         Edit = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,7 +105,12 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
             }
         });
 
-        jButton6.setText("Back");
+        Back.setText("Back");
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -114,7 +124,7 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -131,7 +141,7 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
                     .addComponent(Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -155,17 +165,26 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
 
             Buku buku = new Buku(id_buku, judul, penulis, penerbit, tahunTerbit, kategori, stok);
             new EditDataBuku(null, true, user, buku).show();
+            KepalaPerpus kp= (KepalaPerpus) user;
+            jTable1.setModel(kp.lihatDataBuku());
+            
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row to edit");
         }
     }//GEN-LAST:event_EditActionPerformed
 
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+        // TODO add your handling code here:
+        KepalaPerpus kp= (KepalaPerpus) user;
+            jTable1.setModel(kp.lihatDataBuku());
+    }//GEN-LAST:event_BackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Back;
     private javax.swing.JButton Edit;
     private javax.swing.JButton Tambah;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

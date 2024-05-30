@@ -24,7 +24,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="Edit" min="-2" pref="108" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton6" min="-2" pref="108" max="-2" attributes="0"/>
+              <Component id="Back" min="-2" pref="108" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -44,7 +44,7 @@
                   <Component id="Tambah" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="Edit" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="jButton6" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="Back" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
@@ -203,10 +203,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="Back">
       <Properties>
         <Property name="text" type="java.lang.String" value="Back"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

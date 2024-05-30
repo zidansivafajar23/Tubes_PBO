@@ -264,6 +264,9 @@
               <Image iconType="3" name="/gambar/icons8_close_30px.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="jLabel16AncestorAdded"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

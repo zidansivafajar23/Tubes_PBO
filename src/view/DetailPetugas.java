@@ -96,6 +96,15 @@ public class DetailPetugas extends javax.swing.JPanel {
         jLabel15.setText("-----");
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/icons8_close_30px.png"))); // NOI18N
+        jLabel16.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jLabel16AncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -184,6 +193,10 @@ public class DetailPetugas extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel16AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel16AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel16AncestorAdded
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
