@@ -51,7 +51,7 @@ public class MenuUtamaPengurus extends javax.swing.JFrame {
             pn_content.revalidate();
         } else if (namaMenu == "menu5"){
             pn_content.removeAll();
-            pn_content.add(new DataMemberPetugas());
+            pn_content.add(new DataMemberPetugas(user));
             pn_content.repaint();
             pn_content.revalidate();
         }

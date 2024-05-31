@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import service.DatabaseConnection;
 
 /**
@@ -30,8 +31,42 @@ public class PengurusPerpus extends User implements Pustakawan {
 
     //Method
     @Override
-    public void lihatDataAnggota() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public DefaultTableModel lihatDataAnggota() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Username");
+        model.addColumn("Password");
+        model.addColumn("Role");
+        model.addColumn("Nama");
+        model.addColumn("Alamat");
+        model.addColumn("Tanggal Lahir");
+        model.addColumn("No HP");
+
+        DatabaseConnection db = null;
+        try {
+            db = new DatabaseConnection();
+            Statement stmt = DatabaseConnection.conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT * FROM Pengguna WHERE Role = 'member'");
+
+            while (resultSet.next()) {
+                Object[] row = {
+                    resultSet.getString("username"),
+                    resultSet.getString("Password"),
+                    resultSet.getString("Role"),
+                    resultSet.getString("Nama"),
+                    resultSet.getString("Alamat"),
+                    resultSet.getDate("Tanggal_lahir"),
+                    resultSet.getString("No_hp")
+                };
+                model.addRow(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
+        return model;
     }
 
     @Override
@@ -118,5 +153,29 @@ public class PengurusPerpus extends User implements Pustakawan {
     public void ubahDataBuku() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    public boolean editDataMember(String username, String password, String nama, String alamat, Date tanggalLahir, String noHp) {
+        DatabaseConnection db = null;
+        String updateSQL = "UPDATE Pengguna SET Password = ?, Nama = ?, Alamat = ?, Tanggal_lahir = ?, No_hp = ? WHERE username = ? AND Role = 'member'";
+        try {
+            db = new DatabaseConnection();
+            PreparedStatement pstmt = DatabaseConnection.conn.prepareStatement(updateSQL);
+            pstmt.setString(1, password);
+            pstmt.setString(2, nama);
+            pstmt.setString(3, alamat);
+            pstmt.setDate(4, new java.sql.Date(tanggalLahir.getTime()));
+            pstmt.setString(5, noHp);
+            pstmt.setString(6, username);
 
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
+    }
 }

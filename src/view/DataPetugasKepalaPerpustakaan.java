@@ -5,6 +5,14 @@
  */
 package view;
 
+import java.util.Date;
+import javax.swing.JOptionPane;
+import model.Buku;
+import model.KepalaPerpus;
+import model.Member;
+import model.PengurusPerpus;
+import model.User;
+
 /**
  *
  * @author delll
@@ -14,8 +22,12 @@ public class DataPetugasKepalaPerpustakaan extends javax.swing.JPanel {
     /**
      * Creates new form DataPetugasKepalaPerpustakaan
      */
-    public DataPetugasKepalaPerpustakaan() {
+    User user;
+
+    public DataPetugasKepalaPerpustakaan(KepalaPerpus p) {
+        user = p;
         initComponents();
+        jTable1.setModel(p.lihatDataAnggota());
     }
 
     /**
@@ -90,6 +102,11 @@ public class DataPetugasKepalaPerpustakaan extends javax.swing.JPanel {
         });
 
         jButton6.setText("Back");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -130,8 +147,29 @@ public class DataPetugasKepalaPerpustakaan extends javax.swing.JPanel {
     }//GEN-LAST:event_TambahActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        new EditDataPetugas(null, true).show();
+        int selectedRow = jTable1.getSelectedRow();
+
+        if (selectedRow != -1) {
+            String username = (String) jTable1.getValueAt(selectedRow, 0);
+            String password = (String) jTable1.getValueAt(selectedRow, 1);
+            String nama = (String) jTable1.getValueAt(selectedRow, 3);
+            String alamat = (String) jTable1.getValueAt(selectedRow, 4);
+            Date tanggalLahir = (Date) jTable1.getValueAt(selectedRow, 5);
+            String noHp = (String) jTable1.getValueAt(selectedRow, 6);
+            
+            PengurusPerpus pp = new PengurusPerpus(username, password, alamat, nama,  noHp, tanggalLahir );
+
+            new EditDataPetugas(null, true, user, pp).show();
+            KepalaPerpus p= (KepalaPerpus) user;
+            jTable1.setModel(p.lihatDataAnggota());
+        } else {
+            JOptionPane.showMessageDialog(this, "Pilih baris yang ingin diubah.");
+        }
     }//GEN-LAST:event_EditActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
