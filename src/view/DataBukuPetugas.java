@@ -173,7 +173,7 @@ public class DataBukuPetugas extends javax.swing.JPanel {
             jTable1.setModel(p.lihatDataBuku());
 
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a row to edit");
+            JOptionPane.showMessageDialog(this, "Pilih baris yang ingin diubah.");
         }
     }//GEN-LAST:event_EditActionPerformed
 

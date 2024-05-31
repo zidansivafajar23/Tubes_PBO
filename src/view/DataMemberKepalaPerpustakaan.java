@@ -5,6 +5,10 @@
  */
 package view;
 
+import model.KepalaPerpus;
+import model.PengurusPerpus;
+import model.User;
+
 /**
  *
  * @author delll
@@ -14,8 +18,12 @@ public class DataMemberKepalaPerpustakaan extends javax.swing.JPanel {
     /**
      * Creates new form DataMemberKepalaPerpustakaan
      */
-    public DataMemberKepalaPerpustakaan() {
+    User user;
+
+    public DataMemberKepalaPerpustakaan(KepalaPerpus p) {
+        user = p;
         initComponents();
+        jTable1.setModel(p.lihatDataAnggota());
     }
 
     /**
@@ -70,6 +78,11 @@ public class DataMemberKepalaPerpustakaan extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         jButton6.setText("Back");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -94,6 +107,10 @@ public class DataMemberKepalaPerpustakaan extends javax.swing.JPanel {
                 .addGap(21, 21, 21))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

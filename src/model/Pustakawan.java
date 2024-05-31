@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  * @author zidan
  */
 public interface Pustakawan {
-    public abstract void lihatDataAnggota();
+    public DefaultTableModel lihatDataAnggota();
     public abstract DefaultTableModel lihatDataBuku();
     public abstract void tambahDataBuku();
     public abstract void hapusDataBuku();

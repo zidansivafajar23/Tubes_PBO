@@ -168,7 +168,7 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
             jTable1.setModel(kp.lihatDataBuku());
             
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a row to edit");
+            JOptionPane.showMessageDialog(this, "Pilih baris yang ingin diubah.");
         }
     }//GEN-LAST:event_EditActionPerformed
 
