@@ -40,7 +40,7 @@ public class MenuUtamaMember extends javax.swing.JFrame {
             pn_content.revalidate();
         } else if (namaMenu == "menu3"){
             pn_content.removeAll();
-            pn_content.add(new DaftarPinjamanMember());
+            pn_content.add(new DaftarPinjamanMember(member));
             pn_content.repaint();
             pn_content.revalidate();
         } else if (namaMenu == "menu4"){
