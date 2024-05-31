@@ -5,6 +5,10 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import model.PengurusPerpus;
+import model.User;
+
 /**
  *
  * @author delll
@@ -14,8 +18,12 @@ public class DaftarPeminjamanPetugas extends javax.swing.JPanel {
     /**
      * Creates new form InfoPeminjamPetugas
      */
-    public DaftarPeminjamanPetugas() {
+    PengurusPerpus user;
+
+    public DaftarPeminjamanPetugas(PengurusPerpus p) {
+        this.user = p;
         initComponents();
+        jTable1.setModel(p.lihatDataPeminjaman());
     }
 
     /**
@@ -130,7 +138,16 @@ public class DaftarPeminjamanPetugas extends javax.swing.JPanel {
     }//GEN-LAST:event_TambahActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        new EditStatusPeminjaman(null, true).show();
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+            // Correcting the indices and types
+            int id_pinjam = (int) jTable1.getValueAt(selectedRow, 0);
+             new EditStatusPeminjaman(null, true, id_pinjam, user).show();
+             jTable1.setModel(user.lihatDataPeminjaman());
+            } else {
+            JOptionPane.showMessageDialog(this, "Pilih baris yang ingin diubah.");
+        }
+       
     }//GEN-LAST:event_EditActionPerformed
 
 

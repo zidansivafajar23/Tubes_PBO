@@ -5,6 +5,9 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import model.PengurusPerpus;
+
 /**
  *
  * @author delll
@@ -14,9 +17,21 @@ public class EditStatusPeminjaman extends javax.swing.JDialog {
     /**
      * Creates new form EditStatusPeminjaman
      */
-    public EditStatusPeminjaman(java.awt.Frame parent, boolean modal) {
+    int id;
+    PengurusPerpus p;
+    public EditStatusPeminjaman(java.awt.Frame parent, boolean modal, int id, PengurusPerpus p) {
+        
         super(parent, modal);
+        this.id = id;
+        this.p = p;
         initComponents();
+        // Isi comboBox dengan item-item status
+        status.addItem("belum dikonfirmasi");
+        status.addItem("dipinjam");
+        status.addItem("telat");
+        status.addItem("dikembalikan");
+        status.addItem("ditolak");
+
     }
 
     /**
@@ -33,7 +48,7 @@ public class EditStatusPeminjaman extends javax.swing.JDialog {
         Simpan = new javax.swing.JButton();
         Close = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        status = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,8 +75,6 @@ public class EditStatusPeminjaman extends javax.swing.JDialog {
 
         jLabel5.setText("Status:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -80,7 +93,7 @@ public class EditStatusPeminjaman extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(47, 47, 47)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(79, 79, 79))
         );
         jPanel1Layout.setVerticalGroup(
@@ -91,7 +104,7 @@ public class EditStatusPeminjaman extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Close, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,6 +134,15 @@ public class EditStatusPeminjaman extends javax.swing.JDialog {
 
     private void SimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimpanActionPerformed
         // TODO add your handling code here:
+        String selectedStatus = (String) status.getSelectedItem();
+        p.updateStatusPeminjaman(id, selectedStatus);
+        if ("dipinjam".equals(selectedStatus)){
+            p.setPetugasPeminjam(id, p.getUsername());
+        } else if ("dikembalikan".equals(selectedStatus)){
+            p.setPetugasPenerima(id, p.getUsername());
+        }
+        JOptionPane.showMessageDialog(this, "Data peminjaman berhasil diupdate!");
+        this.dispose();
     }//GEN-LAST:event_SimpanActionPerformed
 
     private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
@@ -157,7 +179,7 @@ public class EditStatusPeminjaman extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                EditStatusPeminjaman dialog = new EditStatusPeminjaman(new javax.swing.JFrame(), true);
+                EditStatusPeminjaman dialog = new EditStatusPeminjaman(new javax.swing.JFrame(), true, 0, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -172,9 +194,9 @@ public class EditStatusPeminjaman extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Close;
     private javax.swing.JButton Simpan;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> status;
     // End of variables declaration//GEN-END:variables
 }

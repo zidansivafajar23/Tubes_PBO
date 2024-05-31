@@ -11,21 +11,33 @@ import java.util.Date;
  *
  * @author zidan
  */
-public class Peminjaman {
-    //Attribute
-    private int id_peminjaman;
-    private Buku bukuDipinjam;
-    private Date tanggalPinjam;
-    private Date tanggalPengembalian;
-    private String status;
-    
-    //Constructor, Getter, dan Setter
+import java.util.Date;
 
-    public Peminjaman(int id_peminjaman, Buku bukuDipinjam, Date tanggalPinjam, Date tanggalPengembalian) {
+public class Peminjaman {
+    // Atribut
+    private int id_peminjaman;
+    private String usernameMember;
+    private int id_buku;
+    private String usernamePetugasPeminjam;
+    private String usernamePetugasPenerima;
+    private Status status;
+    private Date tanggalPeminjaman;
+    private Date tenggatWaktu;
+    private Date tanggalPengembalian;
+    private double denda;
+    
+    // Constructor, Getter, dan Setter
+    public Peminjaman(int id_peminjaman, String usernameMember, int id_buku, String usernamePetugasPeminjam, String usernamePetugasPenerima, Status status, Date tanggalPeminjaman, Date tenggatWaktu, Date tanggalPengembalian, double denda) {
         this.id_peminjaman = id_peminjaman;
-        this.bukuDipinjam = bukuDipinjam;
-        this.tanggalPinjam = tanggalPinjam;
+        this.usernameMember = usernameMember;
+        this.id_buku = id_buku;
+        this.usernamePetugasPeminjam = usernamePetugasPeminjam;
+        this.usernamePetugasPenerima = usernamePetugasPenerima;
+        this.status = status;
+        this.tanggalPeminjaman = tanggalPeminjaman;
+        this.tenggatWaktu = tenggatWaktu;
         this.tanggalPengembalian = tanggalPengembalian;
+        this.denda = denda;
     }
 
     public int getId_peminjaman() {
@@ -36,20 +48,60 @@ public class Peminjaman {
         this.id_peminjaman = id_peminjaman;
     }
 
-    public Buku getBukuDipinjam() {
-        return bukuDipinjam;
+    public String getUsernameMember() {
+        return usernameMember;
     }
 
-    public void setBukuDipinjam(Buku bukuDipinjam) {
-        this.bukuDipinjam = bukuDipinjam;
+    public void setUsernameMember(String usernameMember) {
+        this.usernameMember = usernameMember;
     }
 
-    public Date getTanggalPinjam() {
-        return tanggalPinjam;
+    public int getId_buku() {
+        return id_buku;
     }
 
-    public void setTanggalPinjam(Date tanggalPinjam) {
-        this.tanggalPinjam = tanggalPinjam;
+    public void setId_buku(int id_buku) {
+        this.id_buku = id_buku;
+    }
+
+    public String getUsernamePetugasPeminjam() {
+        return usernamePetugasPeminjam;
+    }
+
+    public void setUsernamePetugasPeminjam(String usernamePetugasPeminjam) {
+        this.usernamePetugasPeminjam = usernamePetugasPeminjam;
+    }
+
+    public String getUsernamePetugasPenerima() {
+        return usernamePetugasPenerima;
+    }
+
+    public void setUsernamePetugasPenerima(String usernamePetugasPenerima) {
+        this.usernamePetugasPenerima = usernamePetugasPenerima;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Date getTanggalPeminjaman() {
+        return tanggalPeminjaman;
+    }
+
+    public void setTanggalPeminjaman(Date tanggalPeminjaman) {
+        this.tanggalPeminjaman = tanggalPeminjaman;
+    }
+
+    public Date getTenggatWaktu() {
+        return tenggatWaktu;
+    }
+
+    public void setTenggatWaktu(Date tenggatWaktu) {
+        this.tenggatWaktu = tenggatWaktu;
     }
 
     public Date getTanggalPengembalian() {
@@ -60,15 +112,21 @@ public class Peminjaman {
         this.tanggalPengembalian = tanggalPengembalian;
     }
 
-    public String isPengembalian() {
-        return status;
+    public double getDenda() {
+        return denda;
     }
 
-    public void setPengembalian(String status) {
-        this.status = status;
+    public void setDenda(double denda) {
+        this.denda = denda;
     }
-    
-    
-    //Method
-    
+
+    // Enum untuk status peminjaman
+    public enum Status {
+        BELUM_DIKONFIRMASI,
+        DIPINJAM,
+        TELAT,
+        DIKEMBALIKAN,
+        DITOLAK
+    }
 }
+
