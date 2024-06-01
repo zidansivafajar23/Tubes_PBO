@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DatabaseConnection {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3308/perpustakaan";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/perpus";
     private static final String USER = "root"; // Default username di XAMPP
     private static final String PASSWORD = ""; // Default password di XAMPP
     public static Connection conn;

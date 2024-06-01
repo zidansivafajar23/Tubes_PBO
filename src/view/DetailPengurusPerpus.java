@@ -6,30 +6,30 @@
 package view;
 
 import java.sql.SQLException;
-import model.Member;
+import model.PengurusPerpus;
 import model.User;
 
 /**
  *
  * @author muham
  */
-public class DetailMember extends javax.swing.JPanel {
+public class DetailPengurusPerpus extends javax.swing.JPanel {
 
     
-    public DetailMember(Member akun) throws SQLException {
+    public DetailPengurusPerpus(PengurusPerpus akun) throws SQLException {
         initComponents();
-        member = akun.getUser();
+        pengurus = akun.getUser();
         setDetailMember();
     }
     
-    User member;
+    User pengurus;
     
     public void setDetailMember(){
-        isi_username.setText(member.getUsername());
-        isi_nama.setText(member.getNama());
-        isi_umur.setText(Integer.toString(member.getUmur()));
-        isi_no_hp.setText(member.getTelepon());
-        isi_alamat.setText(member.getAlamat());
+        isi_username.setText(pengurus.getUsername());
+        isi_nama.setText(pengurus.getNama());
+        isi_umur.setText(Integer.toString(pengurus.getUmur()));
+        isi_no_hp.setText(pengurus.getTelepon());
+        isi_alamat.setText(pengurus.getAlamat());
     }
     
     /**
@@ -67,7 +67,7 @@ public class DetailMember extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel1.setText("Detail Member");
+        jLabel1.setText("Detail Pengurus");
         jLabel1.setAlignmentY(0.0F);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -105,7 +105,7 @@ public class DetailMember extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(365, Short.MAX_VALUE)
+                .addContainerGap(333, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(327, 327, 327))
             .addGroup(jPanel1Layout.createSequentialGroup()
