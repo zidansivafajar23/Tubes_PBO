@@ -21,109 +21,138 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="990" max="-2" attributes="0"/>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="347" max="-2" attributes="0"/>
-              <EmptySpace pref="303" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="1046" max="32767" attributes="0"/>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="990" max="-2" attributes="0"/>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="661" max="32767" attributes="0"/>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="347" max="-2" attributes="0"/>
+                      <EmptySpace pref="301" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
-          <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="20">
-                <Column editable="true" title="Judul Buku" type="java.lang.String">
-                  <Data value="Harry Potter And The Sorcerer&apos;s Stone"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="Pengarang" type="java.lang.String">
-                  <Data value="Harry James"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="Tahun Terbit" type="java.lang.String">
-                  <Data value="1998"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
-              </Table>
-            </Property>
-            <Property name="columnSelectionAllowed" type="boolean" value="true"/>
-            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-            </Property>
-          </Properties>
-        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="jTable1">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="3" rowCount="20">
+                    <Column editable="false" title="Judul Buku" type="java.lang.String">
+                      <Data value="Harry Potter And The Sorcerer&apos;s Stone"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                    </Column>
+                    <Column editable="false" title="Pengarang" type="java.lang.String">
+                      <Data value="Harry James"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                    </Column>
+                    <Column editable="false" title="Tahun Terbit" type="java.lang.String">
+                      <Data value="1998"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                    </Column>
+                  </Table>
+                </Property>
+                <Property name="columnSelectionAllowed" type="boolean" value="true"/>
+                <Property name="rowHeight" type="int" value="30"/>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>

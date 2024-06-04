@@ -140,13 +140,56 @@ public class KepalaPerpus extends User implements Pustakawan {
     }
 
     @Override
-    public void tambahDataBuku() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void tambahDataBuku(String idBuku, String judul, String penulis, String penerbit, String tahunTerbit, String kategori, String stok) {
+        DatabaseConnection db = null;
+        String insertSQL = "INSERT INTO Buku (id_buku, Judul, Penulis, Penerbit, Tahun_terbit, Kategori, Stok) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement pstmt = DatabaseConnection.conn.prepareStatement(insertSQL);
+            // Set the parameters for the insert statement
+            pstmt.setString(1, idBuku);
+            pstmt.setString(2, judul);
+            pstmt.setString(3, penulis);
+            pstmt.setString(4, penerbit);
+            pstmt.setString(5, tahunTerbit);
+            pstmt.setString(6, kategori);
+            pstmt.setString(7, stok);
+            // Execute the insert statement
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
     }
 
     @Override
-    public void hapusDataBuku() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean hapusDataBuku(String idBuku) {
+        DatabaseConnection db = null;
+        String deletePeminjamanSQL = "DELETE FROM peminjaman WHERE id_buku = ?";
+        String deleteBukuSQL = "DELETE FROM Buku WHERE id_buku = ?";
+        
+        try {
+             PreparedStatement pstmtPeminjaman = DatabaseConnection.conn.prepareStatement(deletePeminjamanSQL);
+             PreparedStatement pstmtBuku = DatabaseConnection.conn.prepareStatement(deleteBukuSQL);
+             
+             // Hapus data terkait di tabel peminjaman
+            pstmtPeminjaman.setString(1, idBuku);
+            pstmtPeminjaman.executeUpdate();
+            
+            // Hapus data di tabel buku
+            pstmtBuku.setString(1, idBuku);
+            int affectedRows = pstmtBuku.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (db != null) {
+            db.closeConnection();
+            }
+        }
     }
 
     @Override
@@ -167,6 +210,30 @@ public class KepalaPerpus extends User implements Pustakawan {
             pstmt.setString(5, noHp);
             pstmt.setString(6, username);
 
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
+    }
+    
+    public boolean tambahDataPetugas(String username, String password, String nama, String alamat, Date tanggalLahir, String noHp) {
+        DatabaseConnection db = null;
+        String insertSQL = "INSERT INTO Pengguna (Username, Password, Nama, Alamat, Tanggal_lahir, No_hp, Role) VALUES (?, ?, ?, ?, ?, ?, 'petugas')";
+        try {
+            db = new DatabaseConnection();
+            PreparedStatement pstmt = DatabaseConnection.conn.prepareStatement(insertSQL);
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            pstmt.setString(3, nama);
+            pstmt.setString(4, alamat);
+            pstmt.setDate(5, new java.sql.Date(tanggalLahir.getTime()));
+            pstmt.setString(6, noHp);
             int affectedRows = pstmt.executeUpdate();
             return affectedRows > 0;
         } catch (SQLException e) {

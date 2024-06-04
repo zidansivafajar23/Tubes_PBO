@@ -14,8 +14,8 @@ import javax.swing.table.DefaultTableModel;
 public interface Pustakawan {
     public DefaultTableModel lihatDataAnggota();
     public abstract DefaultTableModel lihatDataBuku();
-    public abstract void tambahDataBuku();
-    public abstract void hapusDataBuku();
+    public abstract void tambahDataBuku(String idBuku, String judul, String penulis, String penerbit, String tahunTerbit, String kategori, String stok);
+    public abstract boolean hapusDataBuku(String idBuku);
     public abstract void ubahDataBuku();
     public abstract boolean editDataBuku(String idBuku, String judul, String penulis, String penerbit, String tahunTerbit, String stok);
 }

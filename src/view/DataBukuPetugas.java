@@ -45,7 +45,7 @@ public class DataBukuPetugas extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Tambah = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        Hapus = new javax.swing.JButton();
         Edit = new javax.swing.JButton();
         Back = new javax.swing.JButton();
 
@@ -85,6 +85,7 @@ public class DataBukuPetugas extends javax.swing.JPanel {
             }
         });
         jTable1.setColumnSelectionAllowed(true);
+        jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
@@ -95,10 +96,10 @@ public class DataBukuPetugas extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Hapus");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Hapus.setText("Hapus");
+        Hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                HapusActionPerformed(evt);
             }
         });
 
@@ -124,7 +125,7 @@ public class DataBukuPetugas extends javax.swing.JPanel {
                 .addGap(488, 488, 488)
                 .addComponent(Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -143,7 +144,7 @@ public class DataBukuPetugas extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
@@ -151,7 +152,9 @@ public class DataBukuPetugas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahActionPerformed
-        new TambahDataBuku(null, true).show();
+        PengurusPerpus p = (PengurusPerpus) user;
+        new TambahDataBuku(null, true, p, null).setVisible(true);
+        jTable1.setModel(p.lihatDataBuku());
     }//GEN-LAST:event_TambahActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
@@ -183,9 +186,26 @@ public class DataBukuPetugas extends javax.swing.JPanel {
             jTable1.setModel(p.lihatDataBuku());
     }//GEN-LAST:event_BackActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusActionPerformed
+        int selectedRow = jTable1.getSelectedRow();
+        
+        if (selectedRow != -1){
+            int input = javax.swing.JOptionPane.showOptionDialog(null, "Apakah anda yakin ingin menghapus data buku ini?", "Message", javax.swing.JOptionPane.OK_CANCEL_OPTION, javax.swing.JOptionPane.INFORMATION_MESSAGE, null, null, null);
+            if(input == javax.swing.JOptionPane.OK_OPTION){
+                String id_buku = (String) jTable1.getValueAt(selectedRow, 0);
+                PengurusPerpus pengurus = (PengurusPerpus) user;
+                if (pengurus.hapusDataBuku(id_buku)){
+                    JOptionPane.showMessageDialog(this, "Data buku berhasil dihapus.");
+                    jTable1.setModel(pengurus.lihatDataBuku());
+                } else {
+                   JOptionPane.showMessageDialog(this, "Data buku gagal dihapus."); 
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Pilih baris yang ingin dihapus.");
+        }
+                   
+    }//GEN-LAST:event_HapusActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -220,8 +240,8 @@ public class DataBukuPetugas extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
     private javax.swing.JButton Edit;
+    private javax.swing.JButton Hapus;
     private javax.swing.JButton Tambah;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

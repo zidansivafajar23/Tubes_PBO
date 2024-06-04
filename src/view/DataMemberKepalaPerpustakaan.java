@@ -75,6 +75,7 @@ public class DataMemberKepalaPerpustakaan extends javax.swing.JPanel {
             }
         });
         jTable1.setColumnSelectionAllowed(true);
+        jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
 
         jButton6.setText("Back");

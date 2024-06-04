@@ -38,7 +38,7 @@ public class DaftarPeminjamanPetugas extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Tambah = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        Hapus = new javax.swing.JButton();
         Edit = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
 
@@ -78,6 +78,7 @@ public class DaftarPeminjamanPetugas extends javax.swing.JPanel {
             }
         });
         jTable1.setColumnSelectionAllowed(true);
+        jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
@@ -88,7 +89,12 @@ public class DaftarPeminjamanPetugas extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Hapus");
+        Hapus.setText("Hapus");
+        Hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HapusActionPerformed(evt);
+            }
+        });
 
         Edit.setText("Edit");
         Edit.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +113,7 @@ public class DaftarPeminjamanPetugas extends javax.swing.JPanel {
                 .addGap(488, 488, 488)
                 .addComponent(Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -126,7 +132,7 @@ public class DaftarPeminjamanPetugas extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
@@ -150,11 +156,31 @@ public class DaftarPeminjamanPetugas extends javax.swing.JPanel {
        
     }//GEN-LAST:event_EditActionPerformed
 
+    private void HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusActionPerformed
+        int selectedRow = jTable1.getSelectedRow();
+        
+        if (selectedRow != -1){
+            int input = javax.swing.JOptionPane.showOptionDialog(null, "Apakah anda yakin ingin menghapus data peminjaman ini?", "Message", javax.swing.JOptionPane.OK_CANCEL_OPTION, javax.swing.JOptionPane.INFORMATION_MESSAGE, null, null, null);
+            if(input == javax.swing.JOptionPane.OK_OPTION){
+                int id_peminjaman = (int) jTable1.getValueAt(selectedRow, 0);
+                PengurusPerpus pengurus = (PengurusPerpus) user;
+                if (pengurus.hapusDataPeminjaman(id_peminjaman)){
+                    JOptionPane.showMessageDialog(this, "Data peminjaman berhasil dihapus.");
+                    jTable1.setModel(user.lihatDataPeminjaman());
+                } else {
+                   JOptionPane.showMessageDialog(this, "Data peminjaman gagal dihapus."); 
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Pilih baris yang ingin dihapus.");
+        }
+    }//GEN-LAST:event_HapusActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Edit;
+    private javax.swing.JButton Hapus;
     private javax.swing.JButton Tambah;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

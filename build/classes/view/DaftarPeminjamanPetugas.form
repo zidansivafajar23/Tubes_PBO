@@ -20,7 +20,7 @@
               <EmptySpace min="-2" pref="488" max="-2" attributes="0"/>
               <Component id="Tambah" min="-2" pref="108" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="108" max="-2" attributes="0"/>
+              <Component id="Hapus" min="-2" pref="108" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="Edit" min="-2" pref="108" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -42,7 +42,7 @@
               <EmptySpace pref="282" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Tambah" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="Hapus" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="Edit" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jButton6" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
@@ -163,6 +163,7 @@
               </TableColumnModel>
             </Property>
             <Property name="columnSelectionAllowed" type="boolean" value="true"/>
+            <Property name="rowHeight" type="int" value="30"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
@@ -178,10 +179,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TambahActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="Hapus">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hapus"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HapusActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Edit">
       <Properties>

@@ -85,6 +85,7 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
             }
         });
         jTable1.setColumnSelectionAllowed(true);
+        jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
@@ -96,6 +97,11 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
         });
 
         jButton1.setText("Hapus");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         Edit.setText("Edit");
         Edit.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +152,9 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahActionPerformed
-        new TambahDataBuku(null, true).show();
+        KepalaPerpus kp = (KepalaPerpus) user;
+        new TambahDataBuku(null, true, kp, null).setVisible(true);
+        jTable1.setModel(kp.lihatDataBuku());
     }//GEN-LAST:event_TambahActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
@@ -177,6 +185,26 @@ public class DataBukuKepalaPerpustakaan extends javax.swing.JPanel {
         KepalaPerpus kp= (KepalaPerpus) user;
             jTable1.setModel(kp.lihatDataBuku());
     }//GEN-LAST:event_BackActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int selectedRow = jTable1.getSelectedRow();
+        
+        if (selectedRow != -1){
+            int input = javax.swing.JOptionPane.showOptionDialog(null, "Apakah anda yakin ingin menghapus data buku ini?", "Message", javax.swing.JOptionPane.OK_CANCEL_OPTION, javax.swing.JOptionPane.INFORMATION_MESSAGE, null, null, null);
+            if(input == javax.swing.JOptionPane.OK_OPTION){
+                String id_buku = (String) jTable1.getValueAt(selectedRow, 0);
+                KepalaPerpus pengurus = (KepalaPerpus) user;
+                if (pengurus.hapusDataBuku(id_buku)){
+                    JOptionPane.showMessageDialog(this, "Data buku berhasil dihapus.");
+                    jTable1.setModel(pengurus.lihatDataBuku());
+                } else {
+                   JOptionPane.showMessageDialog(this, "Data buku gagal dihapus."); 
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Pilih baris yang ingin dihapus.");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
