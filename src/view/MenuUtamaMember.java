@@ -6,6 +6,9 @@
 package view;
 
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Member;
 import view.DashboardMember;
 
@@ -22,20 +25,20 @@ public class MenuUtamaMember extends javax.swing.JFrame {
         member = user;
         initComponents();
         pn_content.removeAll();
-        pn_content.add(new DashboardMember());
+        pn_content.add(new DashboardMember(member));
         pn_content.repaint();
         pn_content.revalidate();
     }
     
-    public void setTampilanMenu(String namaMenu){
+    public void setTampilanMenu(String namaMenu) throws SQLException{
         if (namaMenu == "menu1"){
             pn_content.removeAll();
-            pn_content.add(new DashboardMember());
+            pn_content.add(new DashboardMember(member));
             pn_content.repaint();
             pn_content.revalidate();
         } else if (namaMenu == "menu2"){
             pn_content.removeAll();
-            pn_content.add(new DataBukuMember());
+            pn_content.add(new DataBukuMember(member));
             pn_content.repaint();
             pn_content.revalidate();
         } else if (namaMenu == "menu3"){
@@ -45,7 +48,7 @@ public class MenuUtamaMember extends javax.swing.JFrame {
             pn_content.revalidate();
         } else if (namaMenu == "menu4"){
             pn_content.removeAll();
-            pn_content.add(new DashboardMember());
+            pn_content.add(new DetailMember(member));
             pn_content.repaint();
             pn_content.revalidate();
         }
@@ -443,7 +446,11 @@ public class MenuUtamaMember extends javax.swing.JFrame {
     private void menu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1MouseClicked
         menu1.setBackground(new Color(240,240,240));
         pn_line1.setBackground(new Color(0,153,204));
-        setTampilanMenu("menu1");
+        try {
+            setTampilanMenu("menu1");
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuUtamaMember.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menu1MouseClicked
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -460,7 +467,11 @@ public class MenuUtamaMember extends javax.swing.JFrame {
     private void menu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu2MouseClicked
         menu2.setBackground(new Color(240,240,240));
         pn_line2.setBackground(new Color(0,153,204));
-        setTampilanMenu("menu2");
+        try {
+            setTampilanMenu("menu2");
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuUtamaMember.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menu2MouseClicked
 
     private void menu2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu2MouseEntered
@@ -476,7 +487,11 @@ public class MenuUtamaMember extends javax.swing.JFrame {
     private void menu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu3MouseClicked
         menu3.setBackground(new Color(240,240,240));
         pn_line3.setBackground(new Color(0,153,204));
-        setTampilanMenu("menu3");
+        try {
+            setTampilanMenu("menu3");
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuUtamaMember.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menu3MouseClicked
 
     private void menu3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu3MouseEntered
@@ -492,6 +507,11 @@ public class MenuUtamaMember extends javax.swing.JFrame {
     private void menu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu4MouseClicked
         menu4.setBackground(new Color(240,240,240));
         pn_line4.setBackground(new Color(0,153,204));
+        try {
+            setTampilanMenu("menu4");
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuUtamaMember.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menu4MouseClicked
 
     private void menu4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu4MouseEntered

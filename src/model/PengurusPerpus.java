@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -140,18 +141,86 @@ public class PengurusPerpus extends User implements Pustakawan {
     }
 
     @Override
-    public void tambahDataBuku() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void tambahDataBuku(String idBuku, String judul, String penulis, String penerbit, String tahunTerbit, String kategori, String stok) {
+        DatabaseConnection db = null;
+        String insertSQL = "INSERT INTO Buku (id_buku, Judul, Penulis, Penerbit, Tahun_terbit, Kategori, Stok) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement pstmt = DatabaseConnection.conn.prepareStatement(insertSQL);
+            // Set the parameters for the insert statement
+            pstmt.setString(1, idBuku);
+            pstmt.setString(2, judul);
+            pstmt.setString(3, penulis);
+            pstmt.setString(4, penerbit);
+            pstmt.setString(5, tahunTerbit);
+            pstmt.setString(6, kategori);
+            pstmt.setString(7, stok);
+            // Execute the insert statement
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
     }
 
     @Override
-    public void hapusDataBuku() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean hapusDataBuku(String idBuku) {
+         DatabaseConnection db = null;
+        String deletePeminjamanSQL = "DELETE FROM peminjaman WHERE id_buku = ?";
+        String deleteBukuSQL = "DELETE FROM Buku WHERE id_buku = ?";
+        
+        try {
+             PreparedStatement pstmtPeminjaman = DatabaseConnection.conn.prepareStatement(deletePeminjamanSQL);
+             PreparedStatement pstmtBuku = DatabaseConnection.conn.prepareStatement(deleteBukuSQL);
+             
+             // Hapus data terkait di tabel peminjaman
+            pstmtPeminjaman.setString(1, idBuku);
+            pstmtPeminjaman.executeUpdate();
+            
+            // Hapus data di tabel buku
+            pstmtBuku.setString(1, idBuku);
+            int affectedRows = pstmtBuku.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (db != null) {
+            db.closeConnection();
+            }
+        }
     }
 
     @Override
     public void ubahDataBuku() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public boolean tambahDataMember(String username, String password, String nama, String alamat, String telepon, Date tanggalLahir) {
+        DatabaseConnection db = null;
+        String insertSQL = "INSERT INTO Pengguna (username, Password, Nama, Alamat, No_hp, Tanggal_lahir, Role) VALUES (?, ?, ?, ?, ?, ?, 'member')";
+        try {
+            db = new DatabaseConnection();
+            PreparedStatement pstmt = DatabaseConnection.conn.prepareStatement(insertSQL);
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            pstmt.setString(3, nama);
+            pstmt.setString(4, alamat);
+            pstmt.setString(5, telepon);
+            pstmt.setDate(6, new java.sql.Date(tanggalLahir.getTime()));
+
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
     }
     
     public boolean editDataMember(String username, String password, String nama, String alamat, Date tanggalLahir, String noHp) {
@@ -178,6 +247,34 @@ public class PengurusPerpus extends User implements Pustakawan {
             }
         }
     }
+    
+    public boolean hapusDataMember(String username){
+        DatabaseConnection db = null;
+        String deletePeminjamanSQL = "DELETE FROM peminjaman WHERE username_member = ?";
+        String deleteMemberSQL = "DELETE FROM pengguna WHERE username = ?";
+        
+        try {
+             PreparedStatement pstmtPeminjaman = DatabaseConnection.conn.prepareStatement(deletePeminjamanSQL);
+             PreparedStatement pstmtMember = DatabaseConnection.conn.prepareStatement(deleteMemberSQL);
+             
+             // Hapus data terkait di tabel peminjaman
+            pstmtPeminjaman.setString(1, username);
+            pstmtPeminjaman.executeUpdate();
+            
+            // Hapus data di tabel buku
+            pstmtMember.setString(1, username);
+            int affectedRows = pstmtMember.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (db != null) {
+            db.closeConnection();
+            }
+        }
+    }
+    
     
     public void setPetugasPeminjam(int id_peminjaman, String usernamePetugasPeminjam) {
         DatabaseConnection db = null;
@@ -282,5 +379,89 @@ public class PengurusPerpus extends User implements Pustakawan {
                 db.closeConnection();
             }
         }
+    }
+    
+    public boolean hapusDataPeminjaman(int id_peminjaman){
+        DatabaseConnection db = null;
+        String deletePeminjamanSQL = "DELETE FROM peminjaman WHERE id_peminjaman = ?";
+        try {
+             PreparedStatement pstmtPeminjaman = DatabaseConnection.conn.prepareStatement(deletePeminjamanSQL);
+            
+            // Hapus data terkait di tabel peminjaman
+            pstmtPeminjaman.setInt(1, id_peminjaman);
+            int affectedRows = pstmtPeminjaman.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
+    }
+    
+    public void tambahDataPeminjaman(String memberValue, String idBuku, Date tenggatWaktuValue, String statusValue, String idPeminjaman) {
+        DatabaseConnection db = null;
+        try {
+            db = new DatabaseConnection();
+            //Menyimpan data peminjaman ke database
+            String query = "INSERT INTO Peminjaman (username_member, id_buku, Status, Tenggat_waktu,username_petugas_peminjam,id_peminjaman) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = db.conn.prepareStatement(query);
+            pstmt.setString(1, memberValue);
+            pstmt.setString(2, idBuku);
+            pstmt.setString(3, "dipinjam");
+            pstmt.setDate(4, new java.sql.Date(tenggatWaktuValue.getTime()));
+            pstmt.setString(5, super.getUsername());
+            pstmt.setString(6, idPeminjaman);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
+    }
+    
+    public int getJumlahBuku(){
+        DatabaseConnection db = null;
+        int jumlahBuku = 0;
+        try {
+            db = new DatabaseConnection();
+            Statement stmt = DatabaseConnection.conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT COUNT(*) FROM Buku");
+            if (resultSet.next()) {
+                jumlahBuku = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+             if (db != null) {
+                db.closeConnection();
+            }
+        }
+        return jumlahBuku;
+    }
+    
+     public int getJumlahPeminjaman(){
+        DatabaseConnection db = null;
+        int jumlahPeminjaman = 0;
+        try {
+            db = new DatabaseConnection();
+            Statement stmt = DatabaseConnection.conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT COUNT(*) FROM Peminjaman");
+            
+            if (resultSet.next()) {
+                jumlahPeminjaman = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+             if (db != null) {
+                db.closeConnection();
+            }
+        }
+        return jumlahPeminjaman;
     }
 }

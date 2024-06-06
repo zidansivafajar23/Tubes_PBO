@@ -10,7 +10,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
+
 import service.DatabaseConnection;
 import static service.DatabaseConnection.conn;
 
@@ -38,6 +40,7 @@ public abstract class User {
         this.nama = nama;
         this.telepon = telepon;
         this.tanggalLahir = tngglLahir;
+        this.umur = calculateAge(tanggalLahir);
     }
     
     public User(String username, String password){
@@ -101,7 +104,63 @@ public abstract class User {
         this.tanggalLahir = tngglLahir;
     }
     
+    public User getUser() throws SQLException{
+        DatabaseConnection db = new DatabaseConnection();
+        String query = "SELECT * FROM pengguna WHERE username=?";
+        PreparedStatement preparedStatement = db.conn.prepareStatement(query);
+        preparedStatement.setString(1, username);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        
+         if (resultSet.next()) {
+            String password = resultSet.getString("Password");
+            String alamat = resultSet.getString("Alamat");
+            String nama = resultSet.getString("Nama");
+            Date tanggalLahir = resultSet.getDate("Tanggal_lahir");
+            String telepon = resultSet.getString("No_hp");
+            
+            this.nama = nama;
+            this.alamat = alamat;
+            this.tanggalLahir = tanggalLahir;
+            this.telepon = telepon;
+            
+            Member member = new Member(
+                username,
+                password,
+                alamat,
+                nama,
+                telepon,
+                tanggalLahir
+            );
+
+            resultSet.close();
+            preparedStatement.close();
+            conn.close();
+
+            return member;
+        } else {
+            resultSet.close();
+            preparedStatement.close();
+            conn.close();
+            return null; // Jika user tidak ditemukan
+        }
+    }
+    
     // Abstract Method dan Regular Method
+    
+    public int calculateAge(Date birthDate) {
+        Calendar birthCal = Calendar.getInstance();
+        birthCal.setTime(birthDate);
+
+        Calendar todayCal = Calendar.getInstance();
+
+        int age = todayCal.get(Calendar.YEAR) - birthCal.get(Calendar.YEAR);
+
+        if (todayCal.get(Calendar.DAY_OF_YEAR) < birthCal.get(Calendar.DAY_OF_YEAR)) {
+            age--;
+        }
+
+        return age;
+    }
     
     // Method untuk mendaftarkan pengguna baru
     public boolean register() {

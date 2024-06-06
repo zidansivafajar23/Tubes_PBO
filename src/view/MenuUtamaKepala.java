@@ -6,6 +6,9 @@
 package view;
 
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.KepalaPerpus;
 import model.Member;
 import view.DashboardMember;
@@ -23,15 +26,15 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
         user = m;
         initComponents();
         pn_content.removeAll();
-        pn_content.add(new DashboardMember());
+        pn_content.add(new DashboardKepalaPerpus(user));
         pn_content.repaint();
         pn_content.revalidate();
     }
     
-    public void setTampilanMenu(String namaMenu){
+    public void setTampilanMenu(String namaMenu) throws SQLException{
         if (namaMenu == "menu1"){
             pn_content.removeAll();
-            pn_content.add(new DashboardMember());
+            pn_content.add(new DashboardKepalaPerpus(user));
             pn_content.repaint();
             pn_content.revalidate();
         } else if (namaMenu == "menu2"){
@@ -46,7 +49,7 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
             pn_content.revalidate();
         } else if (namaMenu == "menu4"){
             pn_content.removeAll();
-            pn_content.add(new DashboardMember());
+            pn_content.add(new DetailKepalaPerpus(user));
             pn_content.repaint();
             pn_content.revalidate();
         } else if (namaMenu == "menu5"){
@@ -68,7 +71,6 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
         pn_sidebar = new javax.swing.JPanel();
         gambarLogo = new javax.swing.JLabel();
         Perpusku = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         menu1 = new javax.swing.JPanel();
         pn_line1 = new javax.swing.JPanel();
         lb_icon = new javax.swing.JLabel();
@@ -78,10 +80,6 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
         lb_icon1 = new javax.swing.JLabel();
         lb_Dashboard1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        menu3 = new javax.swing.JPanel();
-        pn_line3 = new javax.swing.JPanel();
-        lb_icon2 = new javax.swing.JLabel();
-        lb_Dashboard2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         menu4 = new javax.swing.JPanel();
         pn_line4 = new javax.swing.JPanel();
@@ -116,10 +114,6 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
         Perpusku.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         Perpusku.setForeground(new java.awt.Color(0, 153, 204));
         Perpusku.setText("Perpusku");
-
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("TANSAKSI");
 
         menu1.setBackground(new java.awt.Color(255, 255, 255));
         menu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -232,60 +226,6 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("MASTER DATA ");
-
-        menu3.setBackground(new java.awt.Color(255, 255, 255));
-        menu3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menu3MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                menu3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                menu3MouseExited(evt);
-            }
-        });
-
-        pn_line3.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout pn_line3Layout = new javax.swing.GroupLayout(pn_line3);
-        pn_line3.setLayout(pn_line3Layout);
-        pn_line3Layout.setHorizontalGroup(
-            pn_line3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 20, Short.MAX_VALUE)
-        );
-        pn_line3Layout.setVerticalGroup(
-            pn_line3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        lb_icon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/icons8_Books_30px.png"))); // NOI18N
-
-        lb_Dashboard2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lb_Dashboard2.setText("Daftar Pinjaman");
-
-        javax.swing.GroupLayout menu3Layout = new javax.swing.GroupLayout(menu3);
-        menu3.setLayout(menu3Layout);
-        menu3Layout.setHorizontalGroup(
-            menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menu3Layout.createSequentialGroup()
-                .addComponent(pn_line3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lb_icon2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lb_Dashboard2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
-        );
-        menu3Layout.setVerticalGroup(
-            menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pn_line3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(menu3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lb_icon2)
-                    .addComponent(lb_Dashboard2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
@@ -416,8 +356,6 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
                         .addGroup(pn_sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(menu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(menu5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(menu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
@@ -440,14 +378,10 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(menu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(menu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(menu4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(284, Short.MAX_VALUE))
         );
 
         getContentPane().add(pn_sidebar, java.awt.BorderLayout.LINE_START);
@@ -510,7 +444,11 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
     private void menu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1MouseClicked
         menu1.setBackground(new Color(240,240,240));
         pn_line1.setBackground(new Color(0,153,204));
-        setTampilanMenu("menu1");
+        try {
+            setTampilanMenu("menu1");
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuUtamaKepala.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menu1MouseClicked
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -527,7 +465,11 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
     private void menu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu2MouseClicked
         menu2.setBackground(new Color(240,240,240));
         pn_line2.setBackground(new Color(0,153,204));
-        setTampilanMenu("menu2");
+        try {
+            setTampilanMenu("menu2");
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuUtamaKepala.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menu2MouseClicked
 
     private void menu2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu2MouseEntered
@@ -540,25 +482,14 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
         pn_line2.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_menu2MouseExited
 
-    private void menu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu3MouseClicked
-        menu3.setBackground(new Color(240,240,240));
-        pn_line3.setBackground(new Color(0,153,204));
-        setTampilanMenu("menu3");
-    }//GEN-LAST:event_menu3MouseClicked
-
-    private void menu3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu3MouseEntered
-        menu3.setBackground(new Color(250,250,250));
-        pn_line3.setBackground(new Color(0,153,204));
-    }//GEN-LAST:event_menu3MouseEntered
-
-    private void menu3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu3MouseExited
-        menu3.setBackground(new Color(255,255,255));
-        pn_line3.setBackground(new Color(255,255,255));
-    }//GEN-LAST:event_menu3MouseExited
-
     private void menu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu4MouseClicked
         menu4.setBackground(new Color(240,240,240));
         pn_line4.setBackground(new Color(0,153,204));
+        try {
+            setTampilanMenu("menu4");
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuUtamaKepala.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menu4MouseClicked
 
     private void menu4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu4MouseEntered
@@ -574,7 +505,11 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
     private void menu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu5MouseClicked
         menu5.setBackground(new Color(240,240,240));
         pn_line5.setBackground(new Color(0,153,204));
-        setTampilanMenu("menu5");
+        try {
+            setTampilanMenu("menu5");
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuUtamaKepala.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menu5MouseClicked
 
     private void menu5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu5MouseEntered
@@ -656,30 +591,25 @@ public class MenuUtamaKepala extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Perpusku;
     private javax.swing.JLabel gambarLogo;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lb_Dashboard;
     private javax.swing.JLabel lb_Dashboard1;
-    private javax.swing.JLabel lb_Dashboard2;
     private javax.swing.JLabel lb_Dashboard3;
     private javax.swing.JLabel lb_Dashboard4;
     private javax.swing.JLabel lb_icon;
     private javax.swing.JLabel lb_icon1;
-    private javax.swing.JLabel lb_icon2;
     private javax.swing.JLabel lb_icon3;
     private javax.swing.JLabel lb_icon4;
     private javax.swing.JPanel menu1;
     private javax.swing.JPanel menu2;
-    private javax.swing.JPanel menu3;
     private javax.swing.JPanel menu4;
     private javax.swing.JPanel menu5;
     private javax.swing.JPanel pn_content;
     private javax.swing.JPanel pn_kanan;
     private javax.swing.JPanel pn_line1;
     private javax.swing.JPanel pn_line2;
-    private javax.swing.JPanel pn_line3;
     private javax.swing.JPanel pn_line4;
     private javax.swing.JPanel pn_line5;
     private javax.swing.JPanel pn_navbar;

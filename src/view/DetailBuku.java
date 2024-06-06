@@ -5,6 +5,10 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import model.Buku;
+import model.Member;
+
 /**
  *
  * @author zidan
@@ -14,11 +18,24 @@ public class DetailBuku extends javax.swing.JDialog {
     /**
      * Creates new form DetailBuku
      */
-    public DetailBuku(java.awt.Frame parent, boolean modal) {
+    public DetailBuku(java.awt.Frame parent, boolean modal, Buku buku, Member akun) {
         super(parent, modal);
         initComponents();
+        this.buku = buku;
+        setDetailBuku();
+        this.akun = akun;
     }
-
+    Buku buku;
+    Member akun;
+    
+    public void setDetailBuku(){
+        id.setText(buku.getId_buku());
+        judul.setText(buku.getJudul());
+        penulis.setText(buku.getPenulis());
+        tahunTerbit.setText(buku.getTahunTerbit());
+        penerbit.setText(buku.getPenerbit());
+        stok.setText(buku.getStock());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,13 +53,14 @@ public class DetailBuku extends javax.swing.JDialog {
         lb_tahun_terbit = new javax.swing.JLabel();
         lb_penerbit = new javax.swing.JLabel();
         lb_stok = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        id = new javax.swing.JLabel();
+        judul = new javax.swing.JLabel();
+        penulis = new javax.swing.JLabel();
+        tahunTerbit = new javax.swing.JLabel();
+        penerbit = new javax.swing.JLabel();
+        stok = new javax.swing.JLabel();
+        pinjamBuku = new javax.swing.JButton();
+        Close = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -55,7 +73,7 @@ public class DetailBuku extends javax.swing.JDialog {
         lb_id_buku.setText("ID Buku :");
 
         lb_nama.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_nama.setText("Nama :");
+        lb_nama.setText("Judul :");
 
         lb_penulis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lb_penulis.setText("Penulis :");
@@ -69,25 +87,37 @@ public class DetailBuku extends javax.swing.JDialog {
         lb_stok.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lb_stok.setText("Stok Buku :");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel8.setText("----");
+        id.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        id.setText("----");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setText("----");
+        judul.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        judul.setText("----");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel10.setText("----");
+        penulis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        penulis.setText("----");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel11.setText("----");
+        tahunTerbit.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        tahunTerbit.setText("----");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel12.setText("----");
+        penerbit.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        penerbit.setText("----");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel13.setText("----");
+        stok.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        stok.setText("----");
 
-        jButton1.setText("Pinjam Buku");
+        pinjamBuku.setText("Pinjam Buku");
+        pinjamBuku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pinjamBukuActionPerformed(evt);
+            }
+        });
+
+        Close.setText("Close");
+        Close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CloseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -106,19 +136,21 @@ public class DetailBuku extends javax.swing.JDialog {
                             .addComponent(lb_stok, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(177, 177, 177)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13)))
+                            .addComponent(id)
+                            .addComponent(judul)
+                            .addComponent(penulis)
+                            .addComponent(tahunTerbit)
+                            .addComponent(penerbit)
+                            .addComponent(stok)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(306, 306, 306)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(370, 370, 370)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(314, Short.MAX_VALUE))
+                        .addGap(302, 302, 302)
+                        .addComponent(pinjamBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Close, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,30 +160,32 @@ public class DetailBuku extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_id_buku)
-                    .addComponent(jLabel8))
+                    .addComponent(id))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_nama)
-                    .addComponent(jLabel9))
+                    .addComponent(judul))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_penulis)
-                    .addComponent(jLabel10))
+                    .addComponent(penulis))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_tahun_terbit)
-                    .addComponent(jLabel11))
+                    .addComponent(tahunTerbit))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_penerbit)
-                    .addComponent(jLabel12))
+                    .addComponent(penerbit))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_stok)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+                    .addComponent(stok))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Close, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pinjamBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -168,6 +202,19 @@ public class DetailBuku extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pinjamBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pinjamBukuActionPerformed
+       int input = javax.swing.JOptionPane.showOptionDialog(null, "Apakah anda yakin ingin meminjam buku ini?", "Message", javax.swing.JOptionPane.OK_CANCEL_OPTION, javax.swing.JOptionPane.INFORMATION_MESSAGE, null, null, null);
+            if(input == javax.swing.JOptionPane.OK_OPTION){
+                akun.tambahDataPeminjaman(buku);
+                JOptionPane.showMessageDialog(this, "Buku berhasil dipinjam.");
+                this.dispose();
+            }
+    }//GEN-LAST:event_pinjamBukuActionPerformed
+
+    private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_CloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,7 +247,7 @@ public class DetailBuku extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DetailBuku dialog = new DetailBuku(new javax.swing.JFrame(), true);
+                DetailBuku dialog = new DetailBuku(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -213,20 +260,21 @@ public class DetailBuku extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Close;
+    private javax.swing.JLabel id;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel judul;
     private javax.swing.JLabel lb_id_buku;
     private javax.swing.JLabel lb_nama;
     private javax.swing.JLabel lb_penerbit;
     private javax.swing.JLabel lb_penulis;
     private javax.swing.JLabel lb_stok;
     private javax.swing.JLabel lb_tahun_terbit;
+    private javax.swing.JLabel penerbit;
+    private javax.swing.JLabel penulis;
+    private javax.swing.JButton pinjamBuku;
+    private javax.swing.JLabel stok;
+    private javax.swing.JLabel tahunTerbit;
     // End of variables declaration//GEN-END:variables
 }

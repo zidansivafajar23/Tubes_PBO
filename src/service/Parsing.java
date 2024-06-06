@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class Parsing {
      // Metode untuk mengonversi string menjadi objek Date
     public static Date getDateFromString(String dateString, Component parent) {
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
             return format.parse(dateString);
         } catch (ParseException e) {
