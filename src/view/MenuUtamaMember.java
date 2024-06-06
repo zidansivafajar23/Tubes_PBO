@@ -25,7 +25,7 @@ public class MenuUtamaMember extends javax.swing.JFrame {
         member = user;
         initComponents();
         pn_content.removeAll();
-        pn_content.add(new DashboardMember());
+        pn_content.add(new DashboardMember(member));
         pn_content.repaint();
         pn_content.revalidate();
     }
@@ -33,12 +33,12 @@ public class MenuUtamaMember extends javax.swing.JFrame {
     public void setTampilanMenu(String namaMenu) throws SQLException{
         if (namaMenu == "menu1"){
             pn_content.removeAll();
-            pn_content.add(new DashboardMember());
+            pn_content.add(new DashboardMember(member));
             pn_content.repaint();
             pn_content.revalidate();
         } else if (namaMenu == "menu2"){
             pn_content.removeAll();
-            pn_content.add(new DataBukuMember());
+            pn_content.add(new DataBukuMember(member));
             pn_content.repaint();
             pn_content.revalidate();
         } else if (namaMenu == "menu3"){

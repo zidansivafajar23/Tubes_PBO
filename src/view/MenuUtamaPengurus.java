@@ -26,7 +26,7 @@ public class MenuUtamaPengurus extends javax.swing.JFrame {
         user = p;
         initComponents();
         pn_content.removeAll();
-        pn_content.add(new DashboardMember());
+        pn_content.add(new DashboardPetugasPerpus(user));
         pn_content.repaint();
         pn_content.revalidate();
     }
@@ -34,7 +34,7 @@ public class MenuUtamaPengurus extends javax.swing.JFrame {
     public void setTampilanMenu(String namaMenu) throws SQLException{
         if (namaMenu == "menu1"){
             pn_content.removeAll();
-            pn_content.add(new DashboardMember());
+            pn_content.add(new DashboardPetugasPerpus(user));
             pn_content.repaint();
             pn_content.revalidate();
         } else if (namaMenu == "menu2"){

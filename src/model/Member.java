@@ -9,8 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 import javax.swing.table.DefaultTableModel;
 import service.DatabaseConnection;
 
@@ -122,6 +125,111 @@ public class Member extends User {
         }
 
         return model;
+    }
+    
+    public ArrayList<Buku> getDataBuku(){
+        DatabaseConnection db = null;
+        ArrayList<Buku> daftarBuku = new ArrayList<>();
+        try {
+            db = new DatabaseConnection();
+            Statement stmt = DatabaseConnection.conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT * FROM Buku");
+             
+            
+            while (resultSet.next()){
+                String id = resultSet.getString("id_buku");
+                String judul = resultSet.getString("Judul");
+                String penulis = resultSet.getString("Penulis");
+                String kategori = resultSet.getString("Kategori");
+                String penerbit = resultSet.getString("Penerbit");
+                String tahunTerbit = resultSet.getString("Tahun_terbit");
+                String stok = resultSet.getString("Stok");
+                
+                daftarBuku.add(new Buku(id,judul,penulis,penerbit,tahunTerbit,kategori,stok));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+             if (db != null) {
+                db.closeConnection();
+            }
+        }
+        return daftarBuku;
+    }
+    
+    public int getJumlahBuku(){
+        DatabaseConnection db = null;
+        int jumlahBuku = 0;
+        try {
+            db = new DatabaseConnection();
+            Statement stmt = DatabaseConnection.conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT COUNT(*) FROM Buku");
+            if (resultSet.next()) {
+                jumlahBuku = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+             if (db != null) {
+                db.closeConnection();
+            }
+        }
+        return jumlahBuku;
+    }
+    
+    public int getJumlahPeminjaman(){
+        DatabaseConnection db = null;
+        int jumlahPeminjaman = 0;
+        try {
+            db = new DatabaseConnection();
+            String query = "SELECT COUNT(*) FROM Peminjaman WHERE username_member=?";
+            PreparedStatement preparedStatement = db.conn.prepareStatement(query);
+            preparedStatement.setString(1, super.getUsername());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                jumlahPeminjaman = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+             if (db != null) {
+                db.closeConnection();
+            }
+        }
+        return jumlahPeminjaman;
+    }
+    
+    public void tambahDataPeminjaman(Buku buku) {
+        DatabaseConnection db = null;
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDate currentDate = currentDateTime.toLocalDate();
+        LocalDate dateSevenDaysFromNow = currentDate.plusDays(7);
+        Date sqlDate = java.sql.Date.valueOf(currentDate);
+        Date sqlDate2 = java.sql.Date.valueOf(dateSevenDaysFromNow);
+        
+        Random random = new Random();
+        int randomNumber = random.nextInt(900) + 100;
+        String idPeminjaman = String.valueOf(randomNumber);
+        try {
+            db = new DatabaseConnection();
+            //Menyimpan data peminjaman ke database
+            String query = "INSERT INTO Peminjaman (username_member, id_buku, Status, Tenggat_waktu,Tanggal_peminjaman,id_peminjaman) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = db.conn.prepareStatement(query);
+            pstmt.setString(1, super.getUsername());
+            pstmt.setString(2, buku.getId_buku());
+            pstmt.setString(3, "belum dikonfirmasi");
+            pstmt.setDate(4, (java.sql.Date) sqlDate2);
+            pstmt.setDate(5, (java.sql.Date) sqlDate);
+            pstmt.setString(6, idPeminjaman);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
     }
 
 }

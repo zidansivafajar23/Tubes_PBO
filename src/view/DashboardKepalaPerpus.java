@@ -6,29 +6,27 @@
 package view;
 
 import java.sql.SQLException;
+import model.KepalaPerpus;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Member;
 
 /**
  *
  * @author zidan
  */
-public class DashboardMember extends javax.swing.JPanel {
+public class DashboardKepalaPerpus extends javax.swing.JPanel {
 
     /**
      * Creates new form DashboardMember
      */
-    public DashboardMember(Member member) {
+    public DashboardKepalaPerpus(KepalaPerpus kepala) {
         initComponents();
-        this.member = member;
-        jumlahBuku.setText(Integer.toString(member.getJumlahBuku()));
-        jumlahPeminjaman.setText(Integer.toString(member.getJumlahPeminjaman()));
-        tablePeminjaman.setModel(member.lihatDataPeminjamanByUsername());
-        
+        this.kepala = kepala;
+        jumlahBuku.setText(Integer.toString(kepala.getJumlahBuku()));
+        tableBuku.setModel(kepala.lihatDataBuku());
     }
     
-    Member member;
+    KepalaPerpus kepala;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,15 +42,11 @@ public class DashboardMember extends javax.swing.JPanel {
         lb_dataBuku = new javax.swing.JLabel();
         lb_icon = new javax.swing.JLabel();
         jumlahBuku = new javax.swing.JLabel();
-        card_daftarPinjaman = new custom.Custom_JPanelRounded();
-        lb_daftarPinjaman = new javax.swing.JLabel();
-        lb_icon4 = new javax.swing.JLabel();
-        jumlahPeminjaman = new javax.swing.JLabel();
         card_akun = new custom.Custom_JPanelRounded();
         lb_akun = new javax.swing.JLabel();
         lb_icon1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablePeminjaman = new javax.swing.JTable();
+        tableBuku = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
@@ -84,77 +78,26 @@ public class DashboardMember extends javax.swing.JPanel {
         card_dataBuku.setLayout(card_dataBukuLayout);
         card_dataBukuLayout.setHorizontalGroup(
             card_dataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card_dataBukuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jumlahBuku)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lb_icon)
-                .addGap(69, 69, 69))
             .addGroup(card_dataBukuLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(lb_dataBuku)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(126, 126, 126)
+                .addGroup(card_dataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lb_dataBuku)
+                    .addGroup(card_dataBukuLayout.createSequentialGroup()
+                        .addComponent(jumlahBuku)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lb_icon)))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         card_dataBukuLayout.setVerticalGroup(
             card_dataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(card_dataBukuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lb_dataBuku)
                 .addGap(18, 18, 18)
+                .addComponent(lb_dataBuku)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(card_dataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lb_icon, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jumlahBuku))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        card_daftarPinjaman.setBackground(new java.awt.Color(0, 153, 204));
-        card_daftarPinjaman.setPreferredSize(new java.awt.Dimension(310, 150));
-        card_daftarPinjaman.setRoundBottomLeft(30);
-        card_daftarPinjaman.setRoundBottomRight(30);
-        card_daftarPinjaman.setRoundTopLeft(30);
-        card_daftarPinjaman.setRoundTopRight(30);
-        card_daftarPinjaman.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                card_daftarPinjamanMouseClicked(evt);
-            }
-        });
-
-        lb_daftarPinjaman.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        lb_daftarPinjaman.setForeground(new java.awt.Color(255, 255, 255));
-        lb_daftarPinjaman.setText("DAFTAR PINJAMAN");
-
-        lb_icon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/icons8_list_70px.png"))); // NOI18N
-
-        jumlahPeminjaman.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jumlahPeminjaman.setForeground(new java.awt.Color(255, 255, 255));
-        jumlahPeminjaman.setText("9");
-
-        javax.swing.GroupLayout card_daftarPinjamanLayout = new javax.swing.GroupLayout(card_daftarPinjaman);
-        card_daftarPinjaman.setLayout(card_daftarPinjamanLayout);
-        card_daftarPinjamanLayout.setHorizontalGroup(
-            card_daftarPinjamanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(card_daftarPinjamanLayout.createSequentialGroup()
-                .addGroup(card_daftarPinjamanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(card_daftarPinjamanLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(lb_daftarPinjaman))
-                    .addGroup(card_daftarPinjamanLayout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jumlahPeminjaman)
-                        .addGap(30, 30, 30)
-                        .addComponent(lb_icon4)))
-                .addContainerGap(68, Short.MAX_VALUE))
-        );
-        card_daftarPinjamanLayout.setVerticalGroup(
-            card_daftarPinjamanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(card_daftarPinjamanLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lb_daftarPinjaman, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(card_daftarPinjamanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jumlahPeminjaman)
-                    .addComponent(lb_icon4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         card_akun.setBackground(new java.awt.Color(0, 153, 204));
@@ -180,14 +123,13 @@ public class DashboardMember extends javax.swing.JPanel {
         card_akunLayout.setHorizontalGroup(
             card_akunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(card_akunLayout.createSequentialGroup()
+                .addGap(145, 145, 145)
                 .addGroup(card_akunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(card_akunLayout.createSequentialGroup()
-                        .addGap(129, 129, 129)
+                        .addGap(9, 9, 9)
                         .addComponent(lb_akun))
-                    .addGroup(card_akunLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(lb_icon1)))
-                .addContainerGap(120, Short.MAX_VALUE))
+                    .addComponent(lb_icon1))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         card_akunLayout.setVerticalGroup(
             card_akunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +141,7 @@ public class DashboardMember extends javax.swing.JPanel {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        tablePeminjaman.setModel(new javax.swing.table.DefaultTableModel(
+        tableBuku.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -210,12 +152,12 @@ public class DashboardMember extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
-        tablePeminjaman.setRowHeight(30);
-        jScrollPane1.setViewportView(tablePeminjaman);
+        tableBuku.setRowHeight(30);
+        jScrollPane1.setViewportView(tableBuku);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("Daftar Peminjaman Buku");
+        jLabel1.setText("Daftar Buku");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -225,18 +167,17 @@ public class DashboardMember extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
+                        .addGap(30, 30, 30))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(88, 88, 88)
                                 .addComponent(card_dataBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
-                                .addComponent(card_daftarPinjaman, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                                .addComponent(card_akun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(30, 30, 30))))
+                                .addGap(66, 66, 66)
+                                .addComponent(card_akun, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +185,6 @@ public class DashboardMember extends javax.swing.JPanel {
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(card_akun, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(card_daftarPinjaman, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(card_dataBuku, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1)
@@ -258,45 +198,34 @@ public class DashboardMember extends javax.swing.JPanel {
 
     private void card_dataBukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_card_dataBukuMouseClicked
         this.removeAll();
-        this.add(new DataBukuMember(member));
+        this.add(new DataBukuKepalaPerpustakaan(kepala));
         this.repaint();
         this.revalidate();
     }//GEN-LAST:event_card_dataBukuMouseClicked
 
-    private void card_daftarPinjamanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_card_daftarPinjamanMouseClicked
-        this.removeAll();
-        this.add(new DaftarPinjamanMember(member));
-        this.repaint();
-        this.revalidate();
-    }//GEN-LAST:event_card_daftarPinjamanMouseClicked
-
     private void card_akunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_card_akunMouseClicked
         try {
             this.removeAll();
-            this.add(new DetailMember(member));
+            this.add(new DetailKepalaPerpus(kepala));
             this.repaint();
             this.revalidate();
         } catch (SQLException ex) {
-            Logger.getLogger(DashboardMember.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DashboardPetugasPerpus.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_card_akunMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private custom.Custom_JPanelRounded card_akun;
-    private custom.Custom_JPanelRounded card_daftarPinjaman;
     private custom.Custom_JPanelRounded card_dataBuku;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jumlahBuku;
-    private javax.swing.JLabel jumlahPeminjaman;
     private javax.swing.JLabel lb_akun;
-    private javax.swing.JLabel lb_daftarPinjaman;
     private javax.swing.JLabel lb_dataBuku;
     private javax.swing.JLabel lb_icon;
     private javax.swing.JLabel lb_icon1;
-    private javax.swing.JLabel lb_icon4;
-    private javax.swing.JTable tablePeminjaman;
+    private javax.swing.JTable tableBuku;
     // End of variables declaration//GEN-END:variables
 }

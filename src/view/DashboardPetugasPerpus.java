@@ -8,27 +8,25 @@ package view;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Member;
+import model.PengurusPerpus;
 
 /**
  *
  * @author zidan
  */
-public class DashboardMember extends javax.swing.JPanel {
+public class DashboardPetugasPerpus extends javax.swing.JPanel {
 
     /**
      * Creates new form DashboardMember
      */
-    public DashboardMember(Member member) {
+    public DashboardPetugasPerpus(PengurusPerpus pengurus) {
         initComponents();
-        this.member = member;
-        jumlahBuku.setText(Integer.toString(member.getJumlahBuku()));
-        jumlahPeminjaman.setText(Integer.toString(member.getJumlahPeminjaman()));
-        tablePeminjaman.setModel(member.lihatDataPeminjamanByUsername());
-        
+        this.pengurus = pengurus;
+        jumlahBuku.setText(Integer.toString(pengurus.getJumlahBuku()));
+        jumlahPeminjaman.setText(Integer.toString(pengurus.getJumlahPeminjaman()));
+        tablePeminjaman.setModel(pengurus.lihatDataPeminjaman());
     }
-    
-    Member member;
+    PengurusPerpus pengurus;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -141,7 +139,7 @@ public class DashboardMember extends javax.swing.JPanel {
                     .addGroup(card_daftarPinjamanLayout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addComponent(jumlahPeminjaman)
-                        .addGap(30, 30, 30)
+                        .addGap(31, 31, 31)
                         .addComponent(lb_icon4)))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
@@ -150,11 +148,15 @@ public class DashboardMember extends javax.swing.JPanel {
             .addGroup(card_daftarPinjamanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lb_daftarPinjaman, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(card_daftarPinjamanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jumlahPeminjaman)
-                    .addComponent(lb_icon4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(card_daftarPinjamanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(card_daftarPinjamanLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lb_icon4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))
+                    .addGroup(card_daftarPinjamanLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jumlahPeminjaman)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         card_akun.setBackground(new java.awt.Color(0, 153, 204));
@@ -258,14 +260,14 @@ public class DashboardMember extends javax.swing.JPanel {
 
     private void card_dataBukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_card_dataBukuMouseClicked
         this.removeAll();
-        this.add(new DataBukuMember(member));
+        this.add(new DataBukuPetugas(pengurus));
         this.repaint();
         this.revalidate();
     }//GEN-LAST:event_card_dataBukuMouseClicked
 
     private void card_daftarPinjamanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_card_daftarPinjamanMouseClicked
         this.removeAll();
-        this.add(new DaftarPinjamanMember(member));
+        this.add(new DaftarPeminjamanPetugas(pengurus));
         this.repaint();
         this.revalidate();
     }//GEN-LAST:event_card_daftarPinjamanMouseClicked
@@ -273,11 +275,11 @@ public class DashboardMember extends javax.swing.JPanel {
     private void card_akunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_card_akunMouseClicked
         try {
             this.removeAll();
-            this.add(new DetailMember(member));
+            this.add(new DetailPengurusPerpus(pengurus));
             this.repaint();
             this.revalidate();
         } catch (SQLException ex) {
-            Logger.getLogger(DashboardMember.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DashboardPetugasPerpus.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_card_akunMouseClicked
 

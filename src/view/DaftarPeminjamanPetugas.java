@@ -140,7 +140,8 @@ public class DaftarPeminjamanPetugas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahActionPerformed
-        new TambahDataPeminjaman(null, true).show();
+        new TambahDataPeminjaman(null, true,user).show();
+        jTable1.setModel(user.lihatDataPeminjaman());
     }//GEN-LAST:event_TambahActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed

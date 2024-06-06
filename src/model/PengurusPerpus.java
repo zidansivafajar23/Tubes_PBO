@@ -400,4 +400,68 @@ public class PengurusPerpus extends User implements Pustakawan {
             }
         }
     }
+    
+    public void tambahDataPeminjaman(String memberValue, String idBuku, Date tenggatWaktuValue, String statusValue, String idPeminjaman) {
+        DatabaseConnection db = null;
+        try {
+            db = new DatabaseConnection();
+            //Menyimpan data peminjaman ke database
+            String query = "INSERT INTO Peminjaman (username_member, id_buku, Status, Tenggat_waktu,username_petugas_peminjam,id_peminjaman) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = db.conn.prepareStatement(query);
+            pstmt.setString(1, memberValue);
+            pstmt.setString(2, idBuku);
+            pstmt.setString(3, "dipinjam");
+            pstmt.setDate(4, new java.sql.Date(tenggatWaktuValue.getTime()));
+            pstmt.setString(5, super.getUsername());
+            pstmt.setString(6, idPeminjaman);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
+    }
+    
+    public int getJumlahBuku(){
+        DatabaseConnection db = null;
+        int jumlahBuku = 0;
+        try {
+            db = new DatabaseConnection();
+            Statement stmt = DatabaseConnection.conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT COUNT(*) FROM Buku");
+            if (resultSet.next()) {
+                jumlahBuku = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+             if (db != null) {
+                db.closeConnection();
+            }
+        }
+        return jumlahBuku;
+    }
+    
+     public int getJumlahPeminjaman(){
+        DatabaseConnection db = null;
+        int jumlahPeminjaman = 0;
+        try {
+            db = new DatabaseConnection();
+            Statement stmt = DatabaseConnection.conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT COUNT(*) FROM Peminjaman");
+            
+            if (resultSet.next()) {
+                jumlahPeminjaman = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+             if (db != null) {
+                db.closeConnection();
+            }
+        }
+        return jumlahPeminjaman;
+    }
 }

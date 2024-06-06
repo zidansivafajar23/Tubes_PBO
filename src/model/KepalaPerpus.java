@@ -245,5 +245,94 @@ public class KepalaPerpus extends User implements Pustakawan {
             }
         }
     }
+    
+    public int getJumlahBuku(){
+        DatabaseConnection db = null;
+        int jumlahBuku = 0;
+        try {
+            db = new DatabaseConnection();
+            Statement stmt = DatabaseConnection.conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT COUNT(*) FROM Buku");
+            if (resultSet.next()) {
+                jumlahBuku = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+             if (db != null) {
+                db.closeConnection();
+            }
+        }
+        return jumlahBuku;
+    }
+    
+     public int getJumlahPeminjaman(){
+        DatabaseConnection db = null;
+        int jumlahPeminjaman = 0;
+        try {
+            db = new DatabaseConnection();
+            Statement stmt = DatabaseConnection.conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT COUNT(*) FROM Peminjaman");
+            
+            if (resultSet.next()) {
+                jumlahPeminjaman = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+             if (db != null) {
+                db.closeConnection();
+            }
+        }
+        return jumlahPeminjaman;
+    }
+     
+      public DefaultTableModel lihatDataPeminjaman() {
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Add columns to model
+        model.addColumn("ID Peminjaman");
+        model.addColumn("Username Member");
+        model.addColumn("ID Buku");
+        model.addColumn("Username Petugas Peminjam");
+        model.addColumn("Username Petugas Penerima");
+        model.addColumn("Status");
+        model.addColumn("Tanggal Peminjaman");
+        model.addColumn("Tenggat Waktu");
+        model.addColumn("Tanggal Pengembalian");
+        model.addColumn("Denda");
+
+        DatabaseConnection db = null;
+        try {
+            db = new DatabaseConnection();
+            Statement stmt = db.conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT * FROM Peminjaman");
+
+            // Iterate through result set and add rows to model
+            while (resultSet.next()) {
+                Object[] row = {
+                    resultSet.getInt("id_peminjaman"),
+                    resultSet.getString("username_member"),
+                    resultSet.getInt("id_buku"),
+                    resultSet.getString("username_petugas_peminjam"),
+                    resultSet.getString("username_petugas_penerima"),
+                    resultSet.getString("Status"),
+                    resultSet.getDate("Tanggal_peminjaman"),
+                    resultSet.getDate("Tenggat_waktu"),
+                    resultSet.getDate("Tanggal_pengembalian"),
+                    resultSet.getDouble("Denda")
+                };
+                model.addRow(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.closeConnection();
+            }
+        }
+
+        return model;
+    }
 }
 
