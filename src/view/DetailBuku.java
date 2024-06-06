@@ -207,7 +207,7 @@ public class DetailBuku extends javax.swing.JDialog {
        int input = javax.swing.JOptionPane.showOptionDialog(null, "Apakah anda yakin ingin meminjam buku ini?", "Message", javax.swing.JOptionPane.OK_CANCEL_OPTION, javax.swing.JOptionPane.INFORMATION_MESSAGE, null, null, null);
             if(input == javax.swing.JOptionPane.OK_OPTION){
                 akun.tambahDataPeminjaman(buku);
-                JOptionPane.showMessageDialog(this, "Data buku berhasil dihapus.");
+                JOptionPane.showMessageDialog(this, "Buku berhasil dipinjam.");
                 this.dispose();
             }
     }//GEN-LAST:event_pinjamBukuActionPerformed
